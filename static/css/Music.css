@@ -1,0 +1,56 @@
+.Music {
+  position: fixed;
+  width: 550px;
+  padding: 10px;
+  height: 150px;
+  background: #302f2f;
+  bottom: 0;
+  left: -550px;	
+  transition: all .5s ease;
+  z-index: 99999;
+}
+.Music-button {
+  position: absolute;
+  width: 32px;
+  height: 150px;
+  background: inherit;
+  right: -32px;
+  top: 0px;
+  cursor: pointer;
+}
+.Music-button img{
+  margin-top: 59px;
+  transition: all .5s ease;
+}
+.Music-menu {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.Music-menu img {
+  width: inherit;
+}
+.Music-playlist-container {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 582px;
+  height: 0px;
+  background: #292929;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+.Music-playlist-title {
+  height: 50px;
+  width: 100%;
+  background: #302f2f;	
+}
+.Music-playlist {
+  width: 100%;
+  height: 450px;
+  border-top: 1px solid #3f3f3f;
+  border-bottom: 1px solid #3f3f3f;
+}

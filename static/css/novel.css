@@ -1,0 +1,58 @@
+.Novel{
+  min-width: 1366px;
+  min-height: 50px;
+}
+.Novel-right{
+  position: fixed;
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 40px;
+  border-left: 1px solid #c9c9c9;
+  background: rgba(0, 0,0, 0.5);
+  transition: all .5s ease;
+}
+.Novel-right-active{
+  width: 400px;
+}
+.Novel-right-container{
+  position: absolute;
+  left: 39px;
+  top: 0;
+  width: 360px;
+  height: 100%;
+  padding-top: 20px;
+  background:  rgba(0, 0, 0, 0.5);
+}
+.Novel-right-button-container{
+  margin-top: 20px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 39px;
+  height: 100%;
+}
+.Novel-right-button{
+  width: 100%;
+  height: 39px;
+  cursor: pointer;
+}
+.Novel-right-button:hover{
+  background: rgba(0, 0,0, 0.5);
+}
+.Novel-right-button-active{
+  background: rgba(0, 0,0, 0.5);
+}
+.Novel-right-button img{
+  width: 24px;
+  margin-left: 7.5px;
+  margin-top: 7.5px;
+}
+.Novel-right-title{
+  color: #c9c9c9;
+  font-size: 16px;
+  padding-left: 20px;
+  border-left: 2px solid #c9c9c9;
+  margin-left: 20px;
+  margin-top: 7.5px;
+}

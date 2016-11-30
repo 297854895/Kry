@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>空如也</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/public.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/atom-one-dark.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/Music.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/novel.css">
+</head>
+<body>
+	<div id="content"></div>
+	<!-- <div class="ds-thread" data-thread-key="1024" data-title="asdasdasdasd" data-url="www.kongruye.cc/1024"></div> -->
+	<script src="http://localhost:8080/bundle.js"></script>
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"kongruye"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0]
+			|| document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		window.onscroll = function (evt) {
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			var NavBar = document.querySelectorAll('.NavBar')[0];
+			if (scrollTop >= 310 && NavBar) {
+				NavBar.style.position = 'fixed';
+				NavBar.style.top = 0;
+				NavBar.style.left = 0;
+				NavBar.style.width = '100%';
+				NavBar.style.zIndex = 99999999999;
+			}else if (scrollTop < 310 && NavBar) {
+				NavBar.style.position = 'relative';
+			}
+		}
+	</script>
+</body>
+</html>
