@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class NavBar extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount = () =>{
     let winWidth = document.querySelectorAll('.NavBar')[0].offsetWidth;
     const Menu = document.querySelectorAll('.NavBar-hide-menu');

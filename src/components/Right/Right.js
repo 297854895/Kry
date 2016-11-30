@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import ArticleList from '../ArticleList/ArticleList';
 export default class Right extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div key="Right" className="Right" style={{width: this.props._width ? this.props._width : '50%'}}>

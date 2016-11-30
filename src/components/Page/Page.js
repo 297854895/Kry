@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 
 export default class Page extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount = () => {
     this.setState(this.props);
   }

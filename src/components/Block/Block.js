@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 export default class Block extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const _Type = this.props._type;
     const _TypeDetails = this.props._typed;

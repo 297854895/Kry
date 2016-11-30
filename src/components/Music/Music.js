@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 export default class Music extends Component {
+  constructor(props) {
+    super(props);
+  }
   show = (evt) => {
     const _Music = document.querySelectorAll('.Music')[0];
     let type = evt.target.getAttribute('data-type');

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Block from '../Block/Block';
 export default class Hot extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const readList = [
       <ul key="hot-readlist" style={{marginTop: '20px', marginBottom: '50px'}}>

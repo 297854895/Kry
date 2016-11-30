@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import TopBar from '../TopBar/TopBar';
 import NavBar from '../NavBar/NavBar';
 export default class TopContainer extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div key="TopContainer" className="TopContainer">

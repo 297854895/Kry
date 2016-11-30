@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Block from '../Block/Block';
 export default class Intro extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const showChild = [
       <div key="infoshow-wrap">

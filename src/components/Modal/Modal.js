@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 export default class Modal extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount = () => {
     const nodes = ReactDOM.findDOMNode(this);
     setTimeout(() => {

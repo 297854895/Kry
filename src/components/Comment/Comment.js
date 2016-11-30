@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Block from '../Block/Block';
 export default class Comment extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const commentList = [
       <ul key="comment-list-wrap" className="comment-list-wrap">

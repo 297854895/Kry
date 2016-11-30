@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Block from '../Block/Block';
 export default class Tag extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const tagList = [
       <div key="tag-list-wrap" className="tag-list-wrap">

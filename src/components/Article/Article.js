@@ -3,6 +3,9 @@ import TitleIcon from '../TitleIcon/TitleIcon';
 import Block from '../Block/Block';
 import Code from '../Code/Code';
 export default class Article extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const Article_ = [
       <Block key={"indexarticle-key0"} _key={"indexarticle-0"} _child={[

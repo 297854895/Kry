@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import TitleIcon from '../TitleIcon/TitleIcon';
 import Block from '../Block/Block';
 export default class ArticleList extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const owData = [
       {id: 1024, type: 'web', tag: [{name: 'Hi', href: 'javascript:;'}, {name: 'Test', href: 'javascript:;'}], view: 999, comment: 999, img: 'test2.jpg', title: '这是标题这是标题标题标题', intro: '在此期间，习近平总书记主持召开深改组会议27次，审议文件162份，为全面深化改革“立柱架梁”。中央深改组第二十七次会议指出，从评估的情况看，全面深化改革实施进展顺利，各领域标志性、支柱性改革任务基本上已经推出，重要领域和关键环节改革取得突破性进展，全面深化改革、全面依法治国的主体框架正在逐步确立。'},

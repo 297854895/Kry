@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import hljs from 'highlight.js';
 import replaceAll from '../../helpers/replaceAll';
 export default class Code extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount = () => {
     const domNode = ReactDOM.findDOMNode(this);
     const nodes = domNode.querySelectorAll('pre code')[0];

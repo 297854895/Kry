@@ -4,6 +4,9 @@ import Block from '../Block/Block';
 import Loading from '../Loading/Loading';
 import Page from '../Page/Page';
 export default class Article extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div key="article-list-container" className="Center center">
