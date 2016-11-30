@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import styles from './Music.less';
-console.log(styles);
 export default class Music extends Component {
   constructor(props) {
     super(props);

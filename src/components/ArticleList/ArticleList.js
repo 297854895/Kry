@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TitleIcon from '../TitleIcon/TitleIcon';
+import {Link} from 'react-router';
 import Block from '../Block/Block';
 export default class ArticleList extends Component {
   constructor(props) {
@@ -18,13 +19,13 @@ export default class ArticleList extends Component {
             <div key="article-time-0" className="article-time"><p>2016-09-25</p>23:23:23</div>
             <div className="article-title">
               <TitleIcon />
-              <a href={`/article?aid=1024&type=${data.type}`}>{data.title ? data.title : ''}</a>
+              <Link to={`/article?aid=1024&type=${data.type}`}>{data.title ? data.title : ''}</Link>
             </div>
             <div className="article-img">
               <img src={`/static/img/${data.img ? data.img : ''}`} />
               <div className="article-img-mask">
                 <div className="article-img-fadeIn blur"></div>
-                <a href={`/article?aid=1024&type=${data.type}`}>浏览详情</a>
+                <Link to={`/article?aid=1024&type=${data.type}`}>浏览详情</Link>
               </div>
             </div>
             <div className="article-intro">
