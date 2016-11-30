@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import styles from './Music.less';
+console.log(styles);
 export default class Music extends Component {
   constructor(props) {
     super(props);
   }
   show = (evt) => {
-    const _Music = document.querySelectorAll('.Music')[0];
+    const _Music = document.querySelectorAll('#Music')[0];
     let type = evt.target.getAttribute('data-type');
     let img = evt.target;
     if (!type) {
@@ -21,17 +23,17 @@ export default class Music extends Component {
       _Music.style.left = '-550px';
       evt.target.setAttribute('data-type', 'show');
       img.style.transform = 'rotate(0deg)';
-      const PlayList = document.querySelectorAll('.Music-playlist-container')[0];
+      const PlayList = document.querySelectorAll('#musicPlaylistContainer')[0];
       PlayList.style.top = 0;
       PlayList.style.height = 0;
-      const MusicMenu = document.querySelectorAll('.Music-menu')[0];
+      const MusicMenu = document.querySelectorAll('#musicMenu')[0];
       MusicMenu.setAttribute('data-type', 'show');
     }
   }
   showPlayList = (evt) => {
     let that = evt.target;
     let type = evt.target.getAttribute('data-type');
-    const PlayList = document.querySelectorAll('.Music-playlist-container')[0];
+    const PlayList = document.querySelectorAll('#musicPlaylistContainer')[0];
     if (!type) {
       type = evt.target.parentNode.getAttribute('data-type');
       that = evt.target.parentNode;
@@ -51,18 +53,17 @@ export default class Music extends Component {
     return PlayList;
   }
   render() {
-    console.log(123);
     return (
-      <div key="Music" className="Music">
-        <div className="Music-button" data-type="show" onClick={this.show}>
+      <div key="Music" className={styles.Music} id="Music">
+        <div className={styles.musicButton} data-type="show" onClick={this.show}>
           <img src="/static/img/arr.png" />
         </div>
-        <div className="Music-menu" data-type="show" onClick={this.showPlayList}>
+        <div className={styles.musicMenu} id="musicMenu" data-type="show" onClick={this.showPlayList}>
           <img src="/static/img/icon-menu-menu.png" />
         </div>
-        <div className="Music-playlist-container">
-          <div className="Music-playlist-title"></div>
-          <ul className="Music-playlist">
+        <div className={styles.musicPlaylistContainer} id="musicPlaylistContainer">
+          <div className={styles.musicPlaylistTitle}></div>
+          <ul className={styles.musicPlaylist}>
             {this.playList()}
           </ul>
         </div>
