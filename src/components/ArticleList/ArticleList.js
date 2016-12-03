@@ -3,13 +3,14 @@ import TitleIcon from '../TitleIcon/TitleIcon';
 import {Link} from 'react-router';
 import Block from '../Block/Block';
 export default class ArticleList extends Component {
-  constructor(props) {
+  constructor(props, context) {
     super(props);
+    this.context;
   }
   render() {
     const owData = [
-      {id: 1024, type: 'web', tag: [{name: 'Hi', href: 'javascript:;'}, {name: 'Test', href: 'javascript:;'}], view: 999, comment: 999, img: 'test2.jpg', title: '这是标题这是标题标题标题', intro: '在此期间，习近平总书记主持召开深改组会议27次，审议文件162份，为全面深化改革“立柱架梁”。中央深改组第二十七次会议指出，从评估的情况看，全面深化改革实施进展顺利，各领域标志性、支柱性改革任务基本上已经推出，重要领域和关键环节改革取得突破性进展，全面深化改革、全面依法治国的主体框架正在逐步确立。'},
-      {id: 1025, type: 'word', tag: [{name: 'Hi', href: 'javascript:;'}, {name: 'Test', href: 'javascript:;'}], view: 999, comment: 999, img: 'test1.jpg', title: '这是标题这是标题标题标题', intro: '在此期间，习近平总书记主持召开深改组会议27次，审议文件162份，为全面深化改革“立柱架梁”。中央深改组第二十七次会议指出，从评估的情况看，全面深化改革实施进展顺利，各领域标志性、支柱性改革任务基本上已经推出，重要领域和关键环节改革取得突破性进展，全面深化改革、全面依法治国的主体框架正在逐步确立。',}
+      {id: 8888, type: 'web', tag: [{name: 'Hi', href: 'javascript:;'}, {name: 'Test', href: 'javascript:;'}], view: 999, comment: 999, img: 'test2.jpg', title: '这是标题这是标题标题标题', intro: '在此期间，习近平总书记主持召开深改组会议27次，审议文件162份，为全面深化改革“立柱架梁”。中央深改组第二十七次会议指出，从评估的情况看，全面深化改革实施进展顺利，各领域标志性、支柱性改革任务基本上已经推出，重要领域和关键环节改革取得突破性进展，全面深化改革、全面依法治国的主体框架正在逐步确立。'},
+      {id: 9999, type: 'word', tag: [{name: 'Hi', href: 'javascript:;'}, {name: 'Test', href: 'javascript:;'}], view: 999, comment: 999, img: 'test1.jpg', title: '这是标题这是标题标题标题', intro: '在此期间，习近平总书记主持召开深改组会议27次，审议文件162份，为全面深化改革“立柱架梁”。中央深改组第二十七次会议指出，从评估的情况看，全面深化改革实施进展顺利，各领域标志性、支柱性改革任务基本上已经推出，重要领域和关键环节改革取得突破性进展，全面深化改革、全面依法治国的主体框架正在逐步确立。',}
     ];
     const showChild = [];
     for (let data of owData) {
@@ -19,13 +20,13 @@ export default class ArticleList extends Component {
             <div key="article-time-0" className="article-time"><p>2016-09-25</p>23:23:23</div>
             <div className="article-title">
               <TitleIcon />
-              <Link to={`/article?aid=1024&type=${data.type}`}>{data.title ? data.title : ''}</Link>
+              <Link to={`/article?type=${data.type}&${data.type === 'web' ? 'w' : 'a'}id=${data.id}`}>{data.title ? data.title : ''}</Link>
             </div>
             <div className="article-img">
               <img src={`/static/img/${data.img ? data.img : ''}`} />
               <div className="article-img-mask">
                 <div className="article-img-fadeIn blur"></div>
-                <Link to={`/article?aid=1024&type=${data.type}`}>浏览详情</Link>
+                <Link to={`/article?type=${data.type}&${data.type === 'web' ? 'w' : 'a'}id=${data.id}`}>浏览详情</Link>
               </div>
             </div>
             <div className="article-intro">
@@ -56,4 +57,7 @@ export default class ArticleList extends Component {
       </div>
     );
   }
+}
+ArticleList.contextTypes = {
+  router: Object
 }

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import {Link} from 'react-router';
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -51,41 +52,41 @@ export default class NavBar extends Component {
               <div className="NavBar-right-div" style={ !_path || _path ==='/home' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <a className="NavBar-right-a" href="/" style={ !_path || _path ==='/home' ? {color: '#302f2f'} : {}}>首页</a>
+              <Link className="NavBar-right-a" to="/" style={ !_path || _path ==='/home' ? {color: '#302f2f'} : {}}>首页</Link>
             </li>
             <li className="NavBar-right-menu">
               <div className="NavBar-right-div" style={ _type === 'web' && _path ==='/list' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <a className="NavBar-right-a" href="/list?type=web" style={ _type === 'web' && _path ==='/list' ? {color: '#302f2f'} : {}}>前端攻城</a>
+              <Link className="NavBar-right-a" to="/list?type=web" style={ _type === 'web' && _path ==='/list' ? {color: '#302f2f'} : {}}>前端攻城</Link>
               <div className="NavBar-hide-menu">
                 <ul>
                   <li>
-                    <i className="fa fa-fire"></i><a href="/article?aid=1024&type=web">我是标题标题</a>
+                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
                   </li>
                   <li>
-                    <i className="fa fa-fire"></i><a href="/article?aid=1024&type=web">我是标题标题</a>
+                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
                   </li>
                   <li>
-                    <i className="fa fa-fire"></i><a href="/article?aid=1024&type=web">我是标题标题</a>
+                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
                   </li>
                   <li>
-                    <i className="fa fa-fire"></i><a href="/article?aid=1024&type=web">我是标题标题</a>
+                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
                   </li>
                   <li>
-                    <i className="fa fa-fire"></i><a href="/article?aid=1024&type=web">我是标题标题</a>
+                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
                   </li>
                   <li>
-                    <i className="fa fa-fire"></i><a href="/article?aid=1024&type=web">我是标题标题</a>
+                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
                   </li>
                   <li>
-                    <i className="fa fa-fire"></i><a href="/article?aid=1024&type=web">我是标题标题</a>
+                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
                   </li>
                   <li>
-                    <i className="fa fa-fire"></i><a href="/article?aid=1024&type=web">我是标题标题</a>
+                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
                   </li>
                   <li>
-                    <i className="fa fa-fire"></i><a href="/article?aid=1024&type=web">我是标题标题</a>
+                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
                   </li>
                 </ul>
               </div>
@@ -94,7 +95,7 @@ export default class NavBar extends Component {
               <div className="NavBar-right-div" style={ _type === 'word' && _path ==='/list' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <a className="NavBar-right-a" href="/list?type=word" style={ _type === 'word' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</a>
+              <Link className="NavBar-right-a" to="/list?type=word" style={ _type === 'word' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</Link>
               <div className="NavBar-hide-menu">
 
               </div>
@@ -103,7 +104,7 @@ export default class NavBar extends Component {
               <div className="NavBar-right-div" >
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <a className="NavBar-right-a" href="/novel">小说</a>
+              <Link className="NavBar-right-a" to="/novel">小说</Link>
               <div className="NavBar-hide-menu">
 
               </div>
@@ -112,7 +113,7 @@ export default class NavBar extends Component {
               <div className="NavBar-right-div" style={ _path ==='/leave' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <a className="NavBar-right-a" href="/leave" style={ _path ==='/leave' ? {color: '#302f2f'} : {}}>雁过留声</a>
+              <Link className="NavBar-right-a" to="/leave" style={ _path ==='/leave' ? {color: '#302f2f'} : {}}>雁过留声</Link>
             </li>
           </ul>
         </div>
