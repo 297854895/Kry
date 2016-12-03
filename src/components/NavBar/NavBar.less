@@ -1,0 +1,90 @@
+.NavBar{
+  position: relative;
+  min-width: 1366px;
+  height: 42px;
+  background: #302f2f;
+}
+.NavBarHideMenu{
+  position: absolute;
+  height: 0px;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 99999999999999;
+  transition: all .5s ease;
+  top: 42px;
+  opacity: 0;
+  overflow: hidden;
+}
+.NavBarRightMenu:hover .NavBarHideMenu{
+  height: 150px;
+  opacity: 1;
+}
+.NavBarCenter {
+  position: relative;
+  width: 1200px;
+  height: 42px;
+}
+.NavBarRight{
+  position: relative;
+  float: right;
+  width: 625px;
+  height: 42px;
+}
+.NavBarRight li{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 125px;
+  height: 42px;
+  cursor: pointer;
+}
+.NavBarRightActive div{
+  width: 107px;
+}
+.NavBarRightActive a{
+  color: #302f2f;
+}
+.NavBarRightA{
+  position: absolute;
+  display: block;
+  color: #fff;
+  text-align: center;
+  line-height: 42px;
+  width: 100%;
+  transition: all .5s;
+  font-weight: bold;
+}
+.NavBarRight li:hover .NavBarRightDiv{
+  width: 107px;
+}
+.NavBarRight li:hover .NavBarRightA{
+  color: #302f2f;
+}
+.NavBarRightDiv{
+  position: absolute;
+  width: 0;
+  overflow: hidden;
+  transition: all .5s;
+  left: 8px;
+  top: 1px;
+}
+.NavBarHideMenu ul{
+  position: absolute;
+  width: 1200px;
+  height: inherit;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  margin: auto;
+}
+.NavBarHideMenu li {
+  display: inline-block;
+  vertical-align: top;
+  width: 33.33333333333333333333333%;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+}
+.NavBarHideMenu a{
+  color: inherit;
+  margin-left: 20px;
+}

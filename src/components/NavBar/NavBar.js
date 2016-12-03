@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {Link} from 'react-router';
-
+import styles from './NavBar.less';
 export default class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -45,21 +45,21 @@ export default class NavBar extends Component {
     }
     const _type = window.location.search.substring(window.location.search.indexOf('type') + 5).substring(0, 4);
     return (
-      <div className="NavBar">
-        <div className="NavBar-center center">
-          <ul className="NavBar-right">
+      <div className={`${styles.NavBar} NavBar`}>
+        <div className={`${styles.NavBarCenter} center`}>
+          <ul className={styles.NavBarRight}>
             <li>
-              <div className="NavBar-right-div" style={ !_path || _path ==='/home' ? {width: '100%'} : {}}>
+              <div className={styles.NavBarRightDiv} style={ !_path || _path ==='/home' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <Link className="NavBar-right-a" to="/" style={ !_path || _path ==='/home' ? {color: '#302f2f'} : {}}>首页</Link>
+              <Link className={styles.NavBarRightA} to="/" style={ !_path || _path ==='/home' ? {color: '#302f2f'} : {}}>首页</Link>
             </li>
-            <li className="NavBar-right-menu">
-              <div className="NavBar-right-div" style={ _type === 'web' && _path ==='/list' ? {width: '100%'} : {}}>
+            <li className={styles.NavBarRightMenu}>
+              <div className={styles.NavBarRightDiv} style={ _type === 'web' && _path ==='/list' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <Link className="NavBar-right-a" to="/list?type=web" style={ _type === 'web' && _path ==='/list' ? {color: '#302f2f'} : {}}>前端攻城</Link>
-              <div className="NavBar-hide-menu">
+              <Link className={styles.NavBarRightA} to="/list?type=web" style={ _type === 'web' && _path ==='/list' ? {color: '#302f2f'} : {}}>前端攻城</Link>
+              <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
                 <ul>
                   <li>
                     <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
@@ -91,29 +91,29 @@ export default class NavBar extends Component {
                 </ul>
               </div>
             </li>
-            <li className="NavBar-right-menu">
-              <div className="NavBar-right-div" style={ _type === 'word' && _path ==='/list' ? {width: '100%'} : {}}>
+            <li className={styles.NavBarRightMenu}>
+              <div className={styles.NavBarRightDiv} style={ _type === 'word' && _path ==='/list' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <Link className="NavBar-right-a" to="/list?type=word" style={ _type === 'word' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</Link>
-              <div className="NavBar-hide-menu">
+              <Link className={styles.NavBarRightA} to="/list?type=word" style={ _type === 'word' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</Link>
+              <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
 
               </div>
             </li>
-            <li className="NavBar-right-menu">
-              <div className="NavBar-right-div" >
+            <li className={styles.NavBarRightMenu}>
+              <div className={styles.NavBarRightDiv} >
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <Link className="NavBar-right-a" to="/novel">小说</Link>
-              <div className="NavBar-hide-menu">
+              <Link className={styles.NavBarRightA} to="/novel">小说</Link>
+              <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
 
               </div>
             </li>
             <li>
-              <div className="NavBar-right-div" style={ _path ==='/leave' ? {width: '100%'} : {}}>
+              <div className={styles.NavBarRightDiv} style={ _path ==='/leave' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <Link className="NavBar-right-a" to="/leave" style={ _path ==='/leave' ? {color: '#302f2f'} : {}}>雁过留声</Link>
+              <Link className={styles.NavBarRightA} to="/leave" style={ _path ==='/leave' ? {color: '#302f2f'} : {}}>雁过留声</Link>
             </li>
           </ul>
         </div>

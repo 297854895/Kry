@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import styles from './Page.less';
 
 export default class Page extends Component {
   constructor(props) {
@@ -39,74 +40,74 @@ export default class Page extends Component {
     const page = [];
     const pageCurrent = pageData.data.current;
     if (pageCurrent === 1) {
-      page.push(<a data-ype="turn" key={"page-back"} data-type="back" className="page-turn page-turn-disable"><i className="fa fa-angle-left"></i></a>);
+      page.push(<a data-ype="turn" key={"page-back"} data-type="back" className={`${styles.pageTurn} ${styles.pageTurnDisable}`}><i className="fa fa-angle-left"></i></a>);
     } else {
-      page.push(<a data-ype="turn" key={"page-back"} data-type="back" className="page-turn" onClick={this.nextPage}><i className="fa fa-angle-left"></i></a>);
+      page.push(<a data-ype="turn" key={"page-back"} data-type="back" className={styles.pageTurn} onClick={this.nextPage}><i className="fa fa-angle-left"></i></a>);
     }
-    let className = 'page-default';
+    let className = styles.pageDefault;
     let domCurrent = 'false';
     if (pageTotal <= 7) {
       for (let num = 1; num < 8; num ++ ) {
         if (num === pageCurrent) {
-          className += ' page-active';
+          className += ` ${styles.pageActive}`;
           domCurrent = 'true';
         }
         page.push(<a className={className} key={`page-${num}`} data-ype="page" data-current={domCurrent} onClick={this.turnPage}>{num}</a>);
-        className = 'page-default';
+        className = styles.pageDefault;
         domCurrent = 'false';
       }
     } else {
       if (pageCurrent > 3 && pageCurrent < pageTotal - 3 ) {
-        page.push(<a className="page-default" key={`page-1`} data-ype="page" data-current="false" onClick={this.turnPage}>1</a>);
-        page.push(<a className="page-hide" key={`page-next-more`} data-ype="page">...</a>);
+        page.push(<a className={styles.pageDefault} key={`page-1`} data-ype="page" data-current="false" onClick={this.turnPage}>1</a>);
+        page.push(<a className={styles.pageHide} key={`page-next-more`} data-ype="page">...</a>);
         for (let num = pageCurrent - 1; num < pageCurrent + 2; num ++ ) {
           if (num === pageCurrent) {
-            className += ' page-active';
+            className += ` ${styles.pageActive}`;
             domCurrent = 'true';
           }
           page.push(<a className={className} key={`page-${num}`} data-ype="page" data-current={domCurrent} onClick={this.turnPage}>{num}</a>);
-          className = 'page-default';
+          className = styles.pageDefault;
           domCurrent = 'false';
         }
-        page.push(<a className="page-hide" key={`page-next-more-2`} data-ype="page">...</a>);
-        page.push(<a className="page-default" key={`page-${pageTotal}`} data-ype="page" data-current="false" onClick={this.turnPage}>{pageTotal}</a>);
+        page.push(<a className={styles.pageHide} key={`page-next-more-2`} data-ype="page">...</a>);
+        page.push(<a className={styles.pageDefault} key={`page-${pageTotal}`} data-ype="page" data-current="false" onClick={this.turnPage}>{pageTotal}</a>);
       } else if (pageCurrent <= 3 ) {
         for (let num = 1; num < 6; num ++ ) {
           if (num === pageCurrent) {
-            className += ' page-active';
+            className += ` ${styles.pageActive}`;
             domCurrent = 'true';
           }
           page.push(<a className={className} key={`page-${num}`} data-ype="page" data-current={domCurrent} onClick={this.turnPage}>{num}</a>);
-          className = 'page-default';
+          className = styles.pageDefault;
           domCurrent = 'false';
         }
-        page.push(<a className="page-hide" key={`page-next-more-2`} data-ype="page">...</a>);
-        page.push(<a className="page-default" key={`page-${pageTotal}`} data-ype="page" data-current="false" onClick={this.turnPage}>{pageTotal}</a>);
+        page.push(<a className={styles.pageHide} key={`page-next-more-2`} data-ype="page">...</a>);
+        page.push(<a className={styles.pageDefault} key={`page-${pageTotal}`} data-ype="page" data-current="false" onClick={this.turnPage}>{pageTotal}</a>);
       } else if (pageCurrent >= pageTotal - 3) {
-        page.push(<a className="page-default" key={`page-1`} data-ype="page" data-current="false" onClick={this.turnPage}>1</a>);
-        page.push(<a className="page-hide" key={`page-next-more`} data-ype="page">...</a>);
+        page.push(<a className={styles.pageDefault} key={`page-1`} data-ype="page" data-current="false" onClick={this.turnPage}>1</a>);
+        page.push(<a className={styles.pageHide} key={`page-next-more`} data-ype="page">...</a>);
         for (let num = pageTotal - 4; num < pageTotal + 1; num ++ ) {
           if (num === pageCurrent) {
-            className += ' page-active';
+            className += ` ${styles.pageActive}`;
             domCurrent = 'true';
           }
           page.push(<a className={className} key={`page-${num}`} data-ype="page" data-current={domCurrent} onClick={this.turnPage}>{num}</a>);
-          className = 'page-default';
+          className = styles.pageDefault;
           domCurrent = 'false';
         }
       }
     }
     if (pageCurrent === pageTotal) {
-      page.push(<a data-ype="turn" key={'page-next'} data-type="next" className="page-turn page-turn-disable"><i className="fa fa-angle-right"></i></a>);
+      page.push(<a data-ype="turn" key={'page-next'} data-type="next" className={`${styles.pageTurn} ${styles.pageTurnDisable}`}><i className="fa fa-angle-right"></i></a>);
     } else {
-      page.push(<a data-ype="turn" key={'page-next'} data-type="next" className="page-turn" onClick={this.nextPage}><i className="fa fa-angle-right"></i></a>);
+      page.push(<a data-ype="turn" key={'page-next'} data-type="next" className={styles.pageTurn} onClick={this.nextPage}><i className="fa fa-angle-right"></i></a>);
     }
     return page;
   }
   render() {
     return (
-      <div className="page">
-        <div className="page-container">
+      <div className={styles.page}>
+        <div className={styles.pageContainer}>
           {this.initialPage()}
         </div>
       </div>

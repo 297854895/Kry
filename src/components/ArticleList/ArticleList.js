@@ -39,11 +39,11 @@ export default class ArticleList extends Component {
               </ul>
               <div className="article-info-info">
                 <div>
-                  <img src="/static/img/article-info-view.png" />
+                  <i className="fa fa-heart"></i>
                   <span>{data.view ? data.view : ''}</span>
                 </div>
                 <div>
-                  <img src="/static/img/article-info-comment.png" />
+                  <i className="fa fa-comments"></i>
                   <span>{data.comment ? data.comment : ''}</span>
                 </div>
               </div>

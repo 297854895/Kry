@@ -1,0 +1,79 @@
+.page{
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.pageContainer{
+  display: inline-block;
+  height: 26px;
+}
+.pageDefault {
+  display: inline-block;
+  border: 1px solid;
+  padding: 0px 6px;
+  margin: 0 4px;
+  color: #fff;
+  border-radius: 3px;
+  background: #000;
+  cursor: pointer;
+  transition: all .3s;
+}
+.pageDefault:hover {
+  background: #fff;
+  color: #000;
+}
+.pageActive {
+  background: #fff;
+  color: #000;
+  cursor: auto;
+}
+.pageTurn {
+  box-sizing:border-box;
+  -moz-box-sizing:border-box; /* Firefox */
+  -webkit-box-sizing:border-box; /* Safari */
+  display: inline-block;
+  border: 1px solid;
+  padding: 0px 6px;
+  margin: 0 4px;
+  color: #fff;
+  border-radius: 3px;
+  background: #000;
+  cursor: pointer;
+  transition: all .7s;
+}
+.pageTurn:hover {
+  background: #fff;
+  color: #000;
+}
+.pageTurnDisable{
+  background: #e0e0e0;
+  border-color: #888;
+  color: #888;
+  cursor: not-allowed;
+}
+.pageTurnDisable:hover{
+  background: #e0e0e0;
+  border-color: #888;
+  color: #888;
+  cursor: auto;
+}
+.pageHide{
+   box-sizing:border-box;
+  -moz-box-sizing:border-box; /* Firefox */
+  -webkit-box-sizing:border-box; /* Safari */
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  margin: 0 5px;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+}
