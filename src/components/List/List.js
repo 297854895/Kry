@@ -24,7 +24,7 @@ export default class Article extends Component {
                       <i className="fa fa-clock-o"></i>&nbsp;2016-11-09
                     </span>
                     <span>
-                      <i className="fa fa-tag"></i>&nbsp;Html&nbsp;Javascript
+                      <i className="fa fa-tags"></i>&nbsp;Html&nbsp;Javascript
                     </span>
                   </div>
                   <p>这是撒谎嗲速度hi啊删掉收到asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分</p>
@@ -43,7 +43,7 @@ export default class Article extends Component {
                       <i className="fa fa-clock-o"></i>&nbsp;2016-11-09
                     </span>
                     <span>
-                      <i className="fa fa-tag"></i>&nbsp;Html&nbsp;Javascript
+                      <i className="fa fa-tags"></i>&nbsp;Html&nbsp;Javascript
                     </span>
                   </div>
                   <p>asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分</p>
@@ -62,7 +62,7 @@ export default class Article extends Component {
                       <i className="fa fa-clock-o"></i>&nbsp;2016-11-09
                     </span>
                     <span>
-                      <i className="fa fa-tag"></i>&nbsp;Html&nbsp;Javascript
+                      <i className="fa fa-tags"></i>&nbsp;Html&nbsp;Javascript
                     </span>
                   </div>
                   <p>asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分</p>
@@ -81,7 +81,7 @@ export default class Article extends Component {
                       <i className="fa fa-clock-o"></i>&nbsp;2016-11-09
                     </span>
                     <span>
-                      <i className="fa fa-tag"></i>&nbsp;Html&nbsp;Javascript
+                      <i className="fa fa-tags"></i>&nbsp;Html&nbsp;Javascript
                     </span>
                   </div>
                   <p>asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分</p>
@@ -100,7 +100,7 @@ export default class Article extends Component {
                       <i className="fa fa-clock-o"></i>&nbsp;2016-11-09
                     </span>
                     <span>
-                      <i className="fa fa-tag"></i>&nbsp;Html&nbsp;Javascript
+                      <i className="fa fa-tags"></i>&nbsp;Html&nbsp;Javascript
                     </span>
                   </div>
                   <p>asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分</p>
@@ -119,7 +119,7 @@ export default class Article extends Component {
                       <i className="fa fa-clock-o"></i>&nbsp;2016-11-09
                     </span>
                     <span>
-                      <i className="fa fa-tag"></i>&nbsp;Html&nbsp;Javascript
+                      <i className="fa fa-tags"></i>&nbsp;Html&nbsp;Javascript
                     </span>
                   </div>
                   <p>asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分</p>
@@ -138,7 +138,7 @@ export default class Article extends Component {
                       <i className="fa fa-clock-o"></i>&nbsp;2016-11-09
                     </span>
                     <span>
-                      <i className="fa fa-tag"></i>&nbsp;Html&nbsp;Javascript
+                      <i className="fa fa-tags"></i>&nbsp;Html&nbsp;Javascript
                     </span>
                   </div>
                   <p>asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分</p>
@@ -157,7 +157,7 @@ export default class Article extends Component {
                       <i className="fa fa-clock-o"></i>&nbsp;2016-11-09
                     </span>
                     <span>
-                      <i className="fa fa-tag"></i>&nbsp;Html&nbsp;Javascript
+                      <i className="fa fa-tags"></i>&nbsp;Html&nbsp;Javascript
                     </span>
                   </div>
                   <p>asdjjjjjjjjjjjjjjjjjjjjj都是房间开发的技术的路口解放快圣诞节分</p>

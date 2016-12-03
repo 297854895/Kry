@@ -47,10 +47,10 @@ export default class Article extends Component {
             <a style={{fontSize: '18px', fontWeight: 'bold', color: '#555'}}>这是标题这是标题这是标题这是标题这是标题这是标题这是标题</a>
           </div>
           <div key="info" className="article-title">
-            <img src="/static/img/icon-time.png" /><span>2016-10-06 24:00:00</span>
-            <img src="/static/img/iconfont-read.png" /><span>2016</span>
-            <img src="/static/img/icon-comment.png" /><span>2016</span>
-            <img src="/static/img/icon-author.png" /><span>空如也</span>
+            <i className="fa fa-clock-o"></i><span>2016-10-06 24:00:00</span>
+            <i className="fa fa-heart"></i><span>2016</span>
+            <i className="fa fa-comments"></i><span>2016</span>
+            <i className="fa fa-user"></i><span>空如也</span>
           </div>
           <div className="article-img" style={{width: 'initial', height: '450px'}}>
             <img src={`/static/img/test2.jpg`} style={{width: '100%', height: '450px'}} />
