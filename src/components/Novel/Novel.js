@@ -8,16 +8,17 @@ export default class Novel extends Component {
     const NovelRight = document.querySelectorAll('.Novel-right')[0];
     const classLength = NovelRight.getAttribute('class').length;
     const NovelRightButton = document.querySelectorAll('.Novel-right-button');
-    const _type = evt.target.getAttribute('data-type');
+    let _type = evt.target.getAttribute('data-type');
+    let currentNode = evt.target;
+    if (!_type) {
+      _type = evt.target.parentNode.getAttribute('data-type');
+      currentNode = evt.target.parentNode;
+    }
     const state_type = this.props.novel.get('rightShow');
     let evtClass = evt.target.getAttribute('class');
     if (classLength === 11) {
       NovelRight.setAttribute('class', 'Novel-right ' + 'Novel-right-active');
-      if (evtClass) {
-        evt.target.setAttribute('class', 'Novel-right-button Novel-right-button-active');
-      }else {
-        evt.target.parentNode.setAttribute('class', 'Novel-right-button Novel-right-button-active');
-      }
+      currentNode.setAttribute('class', 'Novel-right-button Novel-right-button-active');
       this.props.novelBoundAC.setRightShow(_type);
     } else {
       for(const button of Array.from(NovelRightButton)){
@@ -27,11 +28,7 @@ export default class Novel extends Component {
         NovelRight.setAttribute('class', 'Novel-right');
       } else {
         this.props.novelBoundAC.setRightShow(_type);
-        if (evtClass) {
-          evt.target.setAttribute('class', 'Novel-right-button Novel-right-button-active');
-        }else {
-          evt.target.parentNode.setAttribute('class', 'Novel-right-button Novel-right-button-active');
-        }
+        currentNode.setAttribute('class', 'Novel-right-button Novel-right-button-active');
       }
     }
   }
@@ -56,16 +53,20 @@ export default class Novel extends Component {
         <div className="Novel-right">
           <ul className="Novel-right-button-container">
             <li className="Novel-right-button" onClick={this.showContainer} title="目录" data-type="list">
-              <img src="/static/img/novel-menu-mulu.png" data-type="list" />
+              {/*<img src="/static/img/novel-menu-mulu.png" data-type="list" />*/}
+              <i className="fa fa-list"></i>
             </li>
             <li className="Novel-right-button" onClick={this.showContainer} title="评论" data-type="comment">
-              <img src="/static/img/novel-menu-comment.png" data-type="comment" />
+              {/*<img src="/static/img/novel-menu-comment.png" data-type="comment" />*/}
+              <i className="fa fa-comments"></i>
             </li>
             <li className="Novel-right-button" onClick={this.showContainer} title="设置" data-type="set">
-              <img src="/static/img/novel-menu-set.png" data-type="set" />
+              {/*<img src="/static/img/novel-menu-set.png" data-type="set" />*/}
+              <i className="fa fa-cog"></i>
             </li>
             <li className="Novel-right-button" title="点赞">
-              <img src="/static/img/novel-menu-thumb.png" />
+              {/*<img src="/static/img/novel-menu-thumb.png" />*/}
+              <i className="fa fa-thumbs-up"></i>
             </li>
           </ul>
           <div className="Novel-right-container">

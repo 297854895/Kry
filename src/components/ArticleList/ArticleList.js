@@ -17,7 +17,7 @@ export default class ArticleList extends Component {
       showChild.push(
         <Block key={"indexarticle-key" + data.id} _key={"indexarticle-" + data.id} _child={[
           <div key={"article-wrap-By" + data.id}>
-            <div key="article-time-0" className="article-time"><p>2016-09-25</p>23:23:23</div>
+            <div key="article-time-0" className="article-time"><p>2016-09-25</p>周五 雷阵雨</div>
             <div className="article-title">
               <TitleIcon />
               <Link to={`/article?type=${data.type}&${data.type === 'web' ? 'w' : 'a'}id=${data.id}`}>{data.title ? data.title : ''}</Link>
