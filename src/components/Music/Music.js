@@ -54,14 +54,24 @@ export default class Music extends Component {
   render() {
     return (
       <div key="Music" className={styles.Music} id="Music">
+        {/*<div className={`${styles.MusicBK}`}>
+          <img src="/static/img/test2.jpg" />
+        </div>
+        <div className={`${styles.MusicBK} blur`}>
+          <img src="/static/img/test2.jpg" />
+        </div>*/}
+
         <div className={styles.musicButton} data-type="show" onClick={this.show}>
           <img src="/static/img/arr.png" />
         </div>
         <div className={styles.musicMenu} id="musicMenu" data-type="show" onClick={this.showPlayList}>
-          <img src="/static/img/icon-menu-menu.png" />
+          {/*<img src="/static/img/icon-menu-menu.png" /> */}
+          <i className="fa fa-list" style={{fontSize: '24px', color: '#e0e0e0'}}></i>
         </div>
         <div className={styles.musicPlaylistContainer} id="musicPlaylistContainer">
-          <div className={styles.musicPlaylistTitle}></div>
+          <div className={styles.musicPlaylistTitle}>
+            <i className="fa fa-music"></i>&nbsp;&nbsp;音乐列表
+          </div>
           <ul className={styles.musicPlaylist}>
             {this.playList()}
           </ul>

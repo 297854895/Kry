@@ -43,7 +43,7 @@ export default class NavBar extends Component {
     if (_path === '/article') {
       _path = '/list';
     }
-    const _type = window.location.search.substring(window.location.search.indexOf('type') + 5).substring(0, 4);
+    const _type = window.location.search.substring(window.location.search.indexOf('type') + 5).substring(0, 3);
     return (
       <div className={`${styles.NavBar} NavBar`}>
         <div className={`${styles.NavBarCenter} center`}>
@@ -92,10 +92,10 @@ export default class NavBar extends Component {
               </div>
             </li>
             <li className={styles.NavBarRightMenu}>
-              <div className={styles.NavBarRightDiv} style={ _type === 'word' && _path ==='/list' ? {width: '100%'} : {}}>
+              <div className={styles.NavBarRightDiv} style={ _type === 'wor' && _path ==='/list' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <Link className={styles.NavBarRightA} to="/list?type=word" style={ _type === 'word' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</Link>
+              <Link className={styles.NavBarRightA} to="/list?type=word" style={ _type === 'wor' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</Link>
               <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
 
               </div>
