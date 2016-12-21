@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 import styles from './NavBar.less';
 export default class NavBar extends Component {

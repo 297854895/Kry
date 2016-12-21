@@ -568,7 +568,18 @@ body{
   padding: 20px 34px 20px 34px;
 }
 .article-section{
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+}
+.article-section span{
+  margin-left: 20px;
+  font-size: 16px;
+  color: #666;
+}
+.article-section a{
   position: relative;
+  display: inline-block;
   height: 50px;
   width: 50px;
   background: url('/static/img/section.png') no-repeat;
@@ -578,7 +589,6 @@ body{
   font-weight: bold;
   text-align: center;
   line-height: 50px;
-  margin-top: 20px;
 }
 .article-content h1{
   font-size: 16px;
