@@ -129,9 +129,6 @@ export default class Novel extends Component {
             <li className={styles.NovelRightButton} onClick={this.showContainer.bind(this, 'set')} title="设置" key="set" ref="set">
               <i className="fa fa-cog"></i>
             </li>
-            <li className={styles.NovelRightButton} title="点赞" key="thumbs">
-              <i className="fa fa-thumbs-up"></i>
-            </li>
           </ul>
           <div className={styles.NovelRightContainer}>
             {show_title}

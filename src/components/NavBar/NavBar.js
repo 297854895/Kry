@@ -109,7 +109,7 @@ export default class NavBar extends Component {
               </div>
               <Link className={styles.NavBarRightA} to="/novel">小说</Link>
               <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
-
+                {webTec}
               </div>
             </li>
             <li>
