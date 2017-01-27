@@ -44,6 +44,36 @@ export default class NavBar extends Component {
     if (_path === '/article') {
       _path = '/list';
     }
+    const webTec = [
+      <ul>
+        <li>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+        </li>
+        <li>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+        </li>
+        <li>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+        </li>
+        <li>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+        </li>
+        <li>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+        </li>
+        <li>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+        </li>
+        <li>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+        </li>
+        <li>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+        </li>
+        <li>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+        </li>
+      </ul>];
     const _type = window.location.search.substring(window.location.search.indexOf('type') + 5).substring(0, 3);
     return (
       <div className={`${styles.NavBar} NavBar`}>
@@ -61,35 +91,7 @@ export default class NavBar extends Component {
               </div>
               <Link className={styles.NavBarRightA} to="/list?type=web" style={ _type === 'web' && _path ==='/list' ? {color: '#302f2f'} : {}}>前端攻城</Link>
               <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
-                <ul>
-                  <li>
-                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
-                  </li>
-                  <li>
-                    <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
-                  </li>
-                </ul>
+                {webTec}
               </div>
             </li>
             <li className={styles.NavBarRightMenu}>
@@ -98,7 +100,7 @@ export default class NavBar extends Component {
               </div>
               <Link className={styles.NavBarRightA} to="/list?type=word" style={ _type === 'wor' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</Link>
               <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
-
+                {webTec}
               </div>
             </li>
             <li className={styles.NavBarRightMenu}>

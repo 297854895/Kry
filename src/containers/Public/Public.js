@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Notification from '../../components/Notification/Notification';
 import Music from '../../components/Music/Music';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -12,7 +11,6 @@ export default class Public extends Component {
     const children = this.props;
     return (
       <div key="public-containers">
-        <Notification {...this.props}/>
         <Music {...this.props}/>
         {React.cloneElement(children.children, this.props)}
       </div>

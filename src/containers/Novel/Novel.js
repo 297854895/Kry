@@ -9,7 +9,7 @@ import * as novelAC from '../../redux/actions/novel';
 export default class Novel extends Component{
   render() {
     return (
-      <div className="Novel">
+      <div>
         <Novel_ {...this.props}/>
       </div>
     );
