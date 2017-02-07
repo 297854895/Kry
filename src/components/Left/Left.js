@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Intro from '../Intro/Intro';
 import Hot from '../Hot/Hot';
 import Tag from '../Tag/Tag';
-import Comment from '../Comment/Comment';
+import RecentComment from '../RecentComment/RecentComment';
 export default class Left extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +14,7 @@ export default class Left extends Component {
           <Intro />
           <Hot />
           <Tag />
-          <Comment />
+          <RecentComment />
         </div>
       </div>
     );

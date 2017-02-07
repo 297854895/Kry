@@ -2,44 +2,29 @@ import React, {Component} from 'react';
 import TitleIcon from '../TitleIcon/TitleIcon';
 import Block from '../Block/Block';
 import Code from '../Code/Code';
+import Comment from '../Comment/Comment';
 import Style from './Article.less';
+import {fromJS} from 'immutable';
 export default class Article extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount = () => {
-    var ds = document.createElement('script');
-    var short_name = document.createElement('script');
-    var com = document.createElement('div');
-    ds.type = 'text/javascript';
-    short_name.type = 'text/javascript';
-    short_name.innerHTML = `var duoshuoQuery = {short_name:"kongruye"};`;
-    ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    const iframeDuoshuo = document.getElementById('duoshuoContainer');
-    const iframeBody = (iframeDuoshuo.document ? iframeDuoshuo.document : iframeDuoshuo.contentWindow.document ).getElementsByTagName('body')[0];
-    iframeBody.style.margin = 0;
-    iframeBody.style.width = '960px';
-    com.innerHTML = `<div class="ds-thread" data-thread-key="${parseInt(window.location.search.substring(14))}" data-title="请替换成文章的标题" data-url="${window.location.href}" style={{width: '960px'}}></div>`
-    iframeBody.appendChild(com);
-    iframeBody.appendChild(short_name);
-    iframeBody.appendChild(ds);
-    const setIframeHeight = setInterval(()=>{
-      const iframeDOM = document.getElementById('duoshuoContainer');
-      if(iframeBody.offsetHeight === 0) {
-        return;
-      }
-      if (iframeBody.offsetHeight > 150) {
-        iframeDOM.style.height = iframeBody.offsetHeight + 'px';
-        clearInterval(setIframeHeight);
-      } else if (iframeBody.offsetHeight < 150){
-        iframeDOM.style.height = iframeBody.offsetHeight + 'px';
-        clearInterval(setIframeHeight);
-      }
-    },100);
-  }
   render() {
+    let articleinfo = this.props.client.getIn(['currentArticle']);
+    if (!articleinfo) {
+      articleinfo = {};
+      const searchArr = window.location.search.split('&');
+      searchArr.forEach((item) => {
+        if (item.indexOf('type=') > -1) {
+          articleinfo.type = item.substring(item.indexOf('type=') + 5);
+          return;
+        } else if (item.indexOf('id=') > -1) {
+          articleinfo.id = item.substring(item.indexOf('id=') + 3);
+          return;
+        }
+      });
+      articleinfo = fromJS(articleinfo);
+    }
     const Article_ = [
       <Block key={"indexarticle-key0"} _key={"indexarticle-0"} _child={[
         <div key={"article-wrap-By0"}>
@@ -90,12 +75,10 @@ export default class Article extends Component {
       ]} _type="article" _typed="true" />
     ];
     return (
-      <div key="article-details-container" className="Center center">
+      <div key="article-details-container" className="Center center" ref="article">
         {Article_}
         <a name="comments"></a>
-        <iframe id="duoshuoContainer" style={{border: 'none', width: '960px', height: 'auto'}}>
-
-        </iframe>
+        <Comment {...this.props}/>
       </div>
     );
   }

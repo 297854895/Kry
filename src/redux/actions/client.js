@@ -1,18 +1,12 @@
 import * as ActionTypes from '../constants/constants';
 import axios from 'axios';
-import { fromJS } from 'immutable';
-export function AddNotification(val) {
+// import { fromJS } from 'immutable';
+
+export function UpdateClientArticleShowInfo(data) {
   return dispatch => {
     dispatch({
-      type: ActionTypes.ADD_NOTIFICATION,
-      data: val
-    });
-  };
-}
-export function RemoveNotification() {
-  return dispatch => {
-    dispatch({
-      type: ActionTypes.REMOVE_NOTIFICATION
+      type: ActionTypes.UPDATE_CLIENTARTICLEINFO,
+      data: data
     });
   };
 }

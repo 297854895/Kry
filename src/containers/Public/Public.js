@@ -11,7 +11,7 @@ export default class Public extends Component {
     const children = this.props;
     return (
       <div key="public-containers">
-        <Music {...this.props}/>
+         {/*<Music {...this.props}/>*/}
         {React.cloneElement(children.children, this.props)}
       </div>
     );
