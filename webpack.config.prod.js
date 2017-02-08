@@ -1,15 +1,10 @@
 var webpack = require('webpack');
 var path = require('path');
-
-var publicPath = 'http://localhost:3000/';
-var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
-
-var devConfig = {
-    entry:  [__dirname + "/src/client.js", hotMiddlewareScript ],
+var prodConfig = {
+    entry:  [__dirname + "/src/client.js" ],
     output: {
      path: __dirname + "/dist",
      filename: "bundle.js",
-     publicPath: publicPath
     },
     devtool: 'source-map',
     module: {
@@ -38,9 +33,17 @@ var devConfig = {
       ]
     },
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+          compress: {
+            warnings: false
+          },
+          output: {
+            comments: false,
+          },
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+        }),
     ]
 };
-module.exports = devConfig;
+module.exports = prodConfig;

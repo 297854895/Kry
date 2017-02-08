@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "webpack & node bin/www",
-    "build": "webpack"
+    "build": "webpack",
+    "prod": "webpack --config webpack.config.prod.js & pm2 start bin/prod"
   },
   "dependencies": {
     "autoprefixer-loader": "^3.2.0",
