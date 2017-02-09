@@ -1,0 +1,129 @@
+.commentListItem{
+  position: relative;
+  min-height: 90px;
+  padding: 20px 20px 10px 88px;
+  border: 1px solid #e0e0e0;
+  border-right: 2px solid #302f2f;
+  background: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+  .commentListUserPic{
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    img{
+      width: inherit;
+      height: inherit;
+    }
+  }
+  .commentListUserName{
+    color: #333;
+  }
+  .commentListUserCon{
+    padding: 6px 0;
+    color: #666;
+  }
+  .CommentListCommentCom{
+    padding: 6px 10px 20px 30px;
+    li{
+      position: relative;
+      background: #eee;
+      padding: 4px 4px 4px 10px;
+      border: 1px solid #e0e0e0;
+      border-left: 2px solid #888;
+      margin-top: -1px;
+      font-size: 12px;
+      color: #666;
+      b{
+        color: #333;
+        font-weight: normal;
+      }
+    }
+    li:first-child{
+      margin-top: 0px;
+    }
+  }
+  .CommentListHandle{
+    color: #888;
+    font-size: 12px;
+    padding: 2px;
+    span{
+      margin-right: 10px;
+      cursor: pointer;
+      transition: color .2s ease-out;
+      span{
+        margin: 0px;
+        color: inherit;
+      }
+    }
+    span:hover{
+      color: #ff546b;
+    }
+    span:active{
+      color: red;
+    }
+    b{
+      float: right;
+      font-weight: normal;
+    }
+  }
+}
+.CommentTextAreaInput{
+  width: 809px;
+  height: 136px;
+  background: #eee;
+  border: 1px solid #e0e0e0;
+  margin:0 0 20px 30px;
+  textarea{
+    width: 787px;
+    height: 88px;
+    border: none;
+    resize: none;
+    outline: none;
+    padding: 10px 10px 0 10px;
+    background: none;
+  }
+  .CommentTextAreaHandle{
+    position: relative;
+    border-top: 1px solid #ddd;
+    height: 34px;
+    background: #e0e0e0;
+    .CommentTextAreaButton{
+      height: 34px;
+      border: none;
+      width: 80px;
+      margin-top: -1px;
+      margin-right: -1px;
+      float: right;
+      outline: none;
+      cursor: pointer;
+      background: #1abc9c;
+      color: #fff;
+      transition: background-colr .2s ease-out;
+    }
+    .CommentTextAreaButton:active{
+      background: #16A085;
+    }
+    span{
+      color: #999;
+      font-size: 18px;
+      height: 33px;
+      display: inline-block;
+      vertical-align: top;
+      line-height: 33px;
+      width: 60px;
+      text-align: center;
+    }
+    i{
+      cursor: pointer;
+    }
+    i:hover{
+      color: #1abc9c;
+    }
+    i:active{
+      color: #16A085;
+    }
+  }
+}

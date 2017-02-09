@@ -1,0 +1,78 @@
+.CommentTextArea{
+  position: relative;
+  width: 960px;
+  height: 270px;
+  padding: 30px 30px 20px 88px;
+  background: rgba(255, 255, 255, .5);
+  border: 1px solid #e0e0e0;
+  border-right: 2px solid #302f2f;
+  margin-bottom: 20px;
+  .CommentTextAreaUserPic{
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    img{
+      width: inherit;
+      height: inherit;
+    }
+  }
+  .CommentTextAreaInput{
+    width: 839px;
+    height: 210px;
+    background: #eee;
+    border: 1px solid #e0e0e0;
+    textarea{
+      width: 817px;
+      height: 158px;
+      border: none;
+      resize: none;
+      outline: none;
+      padding: 10px 10px 0 10px;
+      background: none;
+    }
+    .CommentTextAreaHandle{
+      position: relative;
+      border-top: 1px solid #ddd;
+      height: 38px;
+      background: #e0e0e0;
+      .CommentTextAreaButton{
+        height: 38px;
+        border: none;
+        width: 80px;
+        margin-top: -1px;
+        margin-right: -1px;
+        float: right;
+        outline: none;
+        cursor: pointer;
+        background: #1abc9c;
+        color: #fff;
+        transition: background-colr .2s ease-out;
+      }
+      .CommentTextAreaButton:active{
+        background: #16A085;
+      }
+      span{
+        color: #999;
+        font-size: 18px;
+        height: 37px;
+        display: inline-block;
+        vertical-align: top;
+        line-height: 37px;
+        width: 60px;
+        text-align: center;
+      }
+      i{
+        cursor: pointer;
+      }
+      i:hover{
+        color: #1abc9c;
+      }
+      i:active{
+        color: #16A085;
+      }
+    }
+  }
+}
