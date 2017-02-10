@@ -1,75 +1,53 @@
-import React, {Component, PropTypes} from 'react';
-import ReactDOM from 'react-dom';
-let hideDOM;
-// componentDidMount = () => {
-//   this.props.clientBoundAC.AddNotification({type: 'info', content: '这是er条信息'});
-//   setTimeout(() => {
-//     this.props.clientBoundAC.AddNotification({type: 'info', content: '这是3条信息'});
-//     setTimeout(() => {
-//       this.props.clientBoundAC.AddNotification({type: 'info', content: '这是4条信息'});
-//     }, 1500);
-//   }, 1500);
-// }
-export default class Notification extends Component {
-  static propTypes = {
-    client: PropTypes.object,
-    clientBoundAC: PropTypes.object
+const typeMap = {
+  'success': {
+    icon: 'fa-check-circle',
+    color: '#3c763d',
+    back: '#dff0d8',
+    border: '#d6e9c6',
+    text: 'Success'
+  },
+  'warn': {
+    icon: 'fa-warning',
+    color: '#8a6d3b',
+    back: '#fcf8e3',
+    border: '#faebcc',
+    text: 'Warning'
+  },
+  'danger': {
+    icon: 'fa-times-circle',
+    color: '#a94442',
+    back: '#f2dede',
+    border: '#ebccd1',
+    text: 'Danger'
+  },
+  'info': {
+    icon: 'fa-info-circle',
+    color: '#31708f',
+    back: '#d9edf7',
+    border: '#bce8f1',
+    text: 'Tips'
+  },
+};
+export default function Notification (options) {
+  let DOM = document.getElementById('Kry-Notification-con');
+  const addNoti = document.createElement('div');
+  addNoti.className = 'Notification';
+  addNoti.style.background = typeMap[options.type].back;
+  addNoti.style.color = typeMap[options.type].color;
+  addNoti.style.borderColor = typeMap[options.type].border;
+  if (!DOM) {
+    DOM = document.createElement('div');
+    DOM.id = 'Kry-Notification-con';
+    document.getElementsByTagName('body')[0].appendChild(DOM);
   }
-  componentDidUpdate = () => {
-  	const nodes = ReactDOM.findDOMNode(this);
-    if (nodes.childNodes.length > 0) {
-      for (const _child of nodes.childNodes ) {
-        setTimeout(() => {
-          _child.style.opacity = 1;
-          _child.style.right = '2px';
-        }, 400);
-        setTimeout(() => {
-          _child.style.opacity = 0;
-          _child.style.right = '-300px';
-          hideDOM = '';
-	    		hideDOM = '';
-        }, 5000);
-      }
-      hideDOM = nodes.childNodes[0];
-	    hideDOM = nodes.childNodes[0];
-    }
-  }
-  hideNotification = () => {
-  	if (hideDOM) {
-  		hideDOM.style.opacity = 0;
-	    hideDOM.style.right = '-300px';
-	    setTimeout(() => {
-	    	this.props.clientBoundAC.RemoveNotification();
-	    }, 1);
-  	}
-  }
-  returnNoti = () => {
-    const NotArr = {
-    	type: 'none'
-    };
-    if (this.props.client) {
-      const _NotiList = this.props.client.getIn(['Notification']);
-      if (_NotiList.size === 0 ) {
-        NotArr.type = 'none';
-      } else if (_NotiList.size === 1) {
-        NotArr.type = _NotiList.getIn([0, 'type']);
-        NotArr.content = _NotiList.getIn([0, 'content']);
-      } else {
-        this.hideNotification();
-        NotArr.type = _NotiList.getIn([0, 'type']);
-        NotArr.content = _NotiList.getIn([0, 'content']);
-      }
-    }
-  	return NotArr;
-  }
-  render() {
-  	const NotiInfo = this.returnNoti();
-    return (
-      <div className="notification-container" key="Notification-container">
-        <div className={NotiInfo.type === 'none' ? '' : "Notification"} key="Notification-1">
-            <div>{NotiInfo.type === 'none' ? '' : NotiInfo.content}</div>
-          </div>
-      </div>
-    );
-  }
+  addNoti.innerHTML =
+  `<span class="Notification-icon"><i class="fa ${typeMap[options.type].icon}"></i></span>
+   <b>${typeMap[options.type].text}${options.close ? '<i class="fa fa-close Notification-close"></i>' : ''}</b>
+   <p>${options.context}</p>
+  `;
+  DOM.appendChild(addNoti);
+  setTimeout(() => {
+    addNoti.style.opacity = 1;
+    addNoti.style.right = '10px';
+  }, 30);
 }

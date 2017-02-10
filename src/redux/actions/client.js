@@ -10,6 +10,15 @@ export function UpdateClientArticleShowInfo(data) {
     });
   };
 }
+//update Value
+export function UpdateClientValue(data) {
+  return dispatch => {
+    dispatch({
+      type: ActionTypes.UPDATE_CLIENTVALUE,
+      data: data
+    });
+  };
+}
 //getArticle comment
 export function getArticleComment(type, articleid, cid) {
   const data = [

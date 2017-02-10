@@ -1,0 +1,39 @@
+.RecentCommentItem{
+  padding: 10px 20px 0 20px;
+  .RecentCommentItemIn{
+    position: relative;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    padding: 8px 0 0 48px;
+    min-height: 60px;
+  }
+  .RecentCommentItemImg{
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    left: 0px;
+    img{
+      width: inherit;
+      height: inherit;
+    }
+  }
+  p{
+    color: #666;
+    font-size: 12px;
+    b{
+      color: #333;
+    }
+    a{
+      text-decoration: underline;
+      cursor: pointer;
+      color: #333;
+    }
+    a:active{
+      color: #111;
+    }
+  }
+}
+.RecentCommentItem:last-child{
+  padding-bottom: 40px;
+}

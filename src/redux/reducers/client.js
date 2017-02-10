@@ -6,6 +6,8 @@ const initState = {
 };
 export default function(state = fromJS(initState), action) {
   switch (action.type) {
+    case ActionTypes.UPDATE_CLIENTVALUE:
+      return state;
     case ActionTypes.UPDATE_CLIENTARTICLEINFO:
       return state.updateIn(['currentArticle'], () => { return fromJS(action.data)});
     case ActionTypes.GET_ARTICLE_COMMENT:
