@@ -11,31 +11,85 @@ export default class Code extends Component {
     const nodes = domNode.querySelectorAll('pre code')[0];
     const codeContainer = document.createElement('div');
     let testCode =
-`import React, {Component} from 'react';
-import TitleIcon from '../TitleIcon/TitleIcon';
-import Block from '../Block/Block';
-export default class Article extends Component {
-  render() {
-    return (
-      <div key="article-list-container" className="Center center">
-        <div key="Right" className="Right" style={{width: '800px'}}>
-          <div className="Center-margin" style={{margin: '0 50px 0 0'}}>
-            <Block key={"indexarticle-key0"} _key={"indexarticle-0"} _child={[]} _type="article" _list="list" />
-            <Block key={"indexarticle-key1"} _key={"indexarticle-1"} _child={[]} _type="article" _list="list" />
-            <Block key={"indexarticle-key2"} _key={"indexarticle-2"} _child={[]} _type="article" _list="list" />
-            <Block key={"indexarticle-key3"} _key={"indexarticle-3"} _child={[]} _type="article" _list="list" />
-          </div>
-        </div>
-        <div key="Left" className="Left" style={{width: '400px'}}>
-          <div className="Center-margin">
-
-          </div>
-        </div>
-      </div>
-    );
+`const typeMap = {
+  'success': {
+    icon: 'fa-check-circle',
+    color: '#3c763d',
+    back: '#dff0d8',
+    border: '#d6e9c6',
+    text: 'Success'
+  },
+  'warn': {
+    icon: 'fa-warning',
+    color: '#8a6d3b',
+    back: '#fcf8e3',
+    border: '#faebcc',
+    text: 'Warning'
+  },
+  'danger': {
+    icon: 'fa-times-circle',
+    color: '#a94442',
+    back: '#f2dede',
+    border: '#ebccd1',
+    text: 'Danger'
+  },
+  'info': {
+    icon: 'fa-info-circle',
+    color: '#31708f',
+    back: '#d9edf7',
+    border: '#bce8f1',
+    text: 'Tips'
+  },
+};
+export default function Notification (options) {
+  let autoCloseTimer;
+  let DOM = document.getElementById('Kry-Notification-con');
+  const addNoti = document.createElement('div');
+  const addB = document.createElement('b');
+  const addP = document.createElement('p');
+  addNoti.className = 'Notification';
+  addNoti.style.background = typeMap[options.type].back;
+  addNoti.style.color = typeMap[options.type].color;
+  addNoti.style.borderColor = typeMap[options.type].border;
+  if (!DOM) {
+    DOM = document.createElement('div');
+    DOM.id = 'Kry-Notification-con';
+    document.getElementsByTagName('body')[0].appendChild(DOM);
   }
-}
-`;
+  const closeBt = document.createElement('i');
+  closeBt.className = 'fa fa-close Notification-close';
+  closeBt.onclick = () => {
+    addNoti.className = addNoti.className + ' blur';
+    if (options.close) {
+      clearTimeout(autoCloseTimer);
+    }
+    addNoti.style.height = '0';
+    addNoti.style.opacity = '.3';
+    closeBt.onclick = null;
+    setTimeout(() => {
+      DOM.removeChild(addNoti);
+    }, 200);
+  }
+  addB.appendChild(closeBt);
+  if (options.close) {
+    autoCloseTimer = setTimeout(() => {
+      addNoti.className = addNoti.className + ' blur';
+      addNoti.style.height = '0';
+      addNoti.style.opacity = '.3';
+      closeBt.onclick = null;
+      setTimeout(() => {
+        DOM.removeChild(addNoti);
+      }, 200);
+    }, options.close);
+  }
+  addNoti.appendChild(addB);
+  addNoti.appendChild(addP);
+  DOM.appendChild(addNoti);
+  setTimeout(() => {
+    addNoti.style.opacity = 1;
+    addNoti.style.right = '10px';
+  }, 30);
+}`;
     testCode = replaceAll(testCode, '<', '&lt;');
     testCode = replaceAll(testCode, '>', '&gt;');
     codeContainer.innerHTML = testCode;

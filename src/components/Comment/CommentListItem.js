@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Style from './CommentListItem.less';
 import PageMin from '../PageMin/PageMin';
+import Notification from '../Notification/Notification.js';
 export default class CommentListItem extends Component {
   constructor(props, context) {
     super(props);
@@ -63,7 +64,23 @@ export default class CommentListItem extends Component {
     }
   }
   publish = () => {
-    console.log(123123);
+    const name = this.refs.name.value;
+    const comment = this.state.comment;
+    if (!name) {
+      Notification({
+        type: 'danger',
+        context: '少侠大可留名之后再作评论...',
+      });
+      return;
+    }
+    if (!comment || comment.length <= 0) {
+      Notification({
+        type: 'danger',
+        context: '少侠所言当真是玄之又玄，可否通俗几分...',
+      });
+      return;
+    }
+    console.log({comment: comment, name: name});
   }
   render() {
     return (
@@ -80,6 +97,7 @@ export default class CommentListItem extends Component {
             <span className={Style.CommentTextNum}>{this.state.comment.length}/200</span>
             <div className={Style.CommentTextAreaHandle}>
               <span><i onClick={this.showFace} className="fa fa-smile-o"></i></span>
+              <div>留名<input maxLength={7} placeholder="还须少侠留名" ref="name" /></div>
               <button className={Style.CommentTextAreaButton} onClick={this.publish}>回复</button>
             </div>
             {this.state.faceShow ? this.returnFace() : ''}

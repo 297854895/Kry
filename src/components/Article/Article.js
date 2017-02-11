@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import TitleIcon from '../TitleIcon/TitleIcon';
 import Block from '../Block/Block';
 import Code from '../Code/Code';
+import Like from '../Like/Like';
 import Comment from '../Comment/Comment';
 import Style from './Article.less';
 import {fromJS} from 'immutable';
@@ -70,6 +71,7 @@ export default class Article extends Component {
               第二章
             </div>
             <Code />
+            <Like />
           </div>
         </div>
       ]} _type="article" _typed="true" />

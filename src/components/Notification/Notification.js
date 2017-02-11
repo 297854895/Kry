@@ -29,8 +29,11 @@ const typeMap = {
   },
 };
 export default function Notification (options) {
+  let autoCloseTimer;
   let DOM = document.getElementById('Kry-Notification-con');
   const addNoti = document.createElement('div');
+  const addB = document.createElement('b');
+  const addP = document.createElement('p');
   addNoti.className = 'Notification';
   addNoti.style.background = typeMap[options.type].back;
   addNoti.style.color = typeMap[options.type].color;
@@ -40,11 +43,37 @@ export default function Notification (options) {
     DOM.id = 'Kry-Notification-con';
     document.getElementsByTagName('body')[0].appendChild(DOM);
   }
-  addNoti.innerHTML =
-  `<span class="Notification-icon"><i class="fa ${typeMap[options.type].icon}"></i></span>
-   <b>${typeMap[options.type].text}${options.close ? '<i class="fa fa-close Notification-close"></i>' : ''}</b>
-   <p>${options.context}</p>
-  `;
+  addNoti.innerHTML = `<span class="Notification-icon"><i class="fa ${typeMap[options.type].icon}"></i></span>`;
+  addB.innerHTML =  `${typeMap[options.type].text}`;
+  const closeBt = document.createElement('i');
+  closeBt.className = 'fa fa-close Notification-close';
+  closeBt.onclick = () => {
+    addNoti.className = addNoti.className + ' blur';
+    if (options.close) {
+      clearTimeout(autoCloseTimer);
+    }
+    addNoti.style.height = '0';
+    addNoti.style.opacity = '.3';
+    closeBt.onclick = null;
+    setTimeout(() => {
+      DOM.removeChild(addNoti);
+    }, 200);
+  }
+  addB.appendChild(closeBt);
+  if (options.close) {
+    autoCloseTimer = setTimeout(() => {
+      addNoti.className = addNoti.className + ' blur';
+      addNoti.style.height = '0';
+      addNoti.style.opacity = '.3';
+      closeBt.onclick = null;
+      setTimeout(() => {
+        DOM.removeChild(addNoti);
+      }, 200);
+    }, options.close);
+  }
+  addNoti.appendChild(addB);
+  addP.innerHTML = `${options.context}`;
+  addNoti.appendChild(addP);
   DOM.appendChild(addNoti);
   setTimeout(() => {
     addNoti.style.opacity = 1;

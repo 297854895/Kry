@@ -3,7 +3,7 @@ import TitleIcon from '../TitleIcon/TitleIcon';
 import Block from '../Block/Block';
 import Loading from '../Loading/Loading';
 import Page from '../Page/Page';
-export default class Article extends Component {
+export default class List extends Component {
   constructor(props) {
     super(props);
   }
@@ -12,6 +12,9 @@ export default class Article extends Component {
       <div key="article-list-container" className="Center center">
         <div key="Right" className="Right" style={{width: '800px'}}>
           <div className="Center-margin" style={{margin: '0 50px 0 0'}}>
+            <span className="filter-list-title">
+              {this.props.data === 'web' ? '前端攻城' : '污文弄墨'}
+            </span>
             <Block key={"indexarticle-key0"} _key={"indexarticle-0"} _child={[
               <div key="indexarticle-key0-list">
                 <div className="article-list-left">

@@ -42,26 +42,38 @@ export default class CommentTextArea extends Component {
     </ul>);
   }
   publish = () => {
-    Notification({
-      type: 'success',
-      context: '很大发生卡拉姆法都没饭！',
-      close: true
-    });
-    Notification({
-      type: 'warn',
-      context: '很大发生卡拉姆法都没饭！',
-      close: true
-    });
-    Notification({
-      type: 'danger',
-      context: '很大发生卡拉姆法都没饭！',
-      close: true
-    });
-    Notification({
-      type: 'info',
-      context: '很大发生卡拉姆法都没饭！',
-      close: true
-    });
+    const name = this.refs.name.value;
+    const comment = this.state.comment;
+    if (!name) {
+      Notification({
+        type: 'danger',
+        context: '少侠大可留名之后再作评论...',
+      });
+      return;
+    }
+    if (!comment || comment.length <= 0) {
+      Notification({
+        type: 'danger',
+        context: '少侠所言当真是玄之又玄，可否通俗几分...',
+      });
+      return;
+    }
+    console.log({comment: comment, name: name});
+    // Notification({
+    //   type: 'warn',
+    //   context: '很大发生卡拉姆法都没饭！',
+    //   close: true
+    // });
+    // Notification({
+    //   type: 'danger',
+    //   context: '很大发生卡拉姆法都没饭！',
+    //   close: true
+    // });
+    // Notification({
+    //   type: 'info',
+    //   context: '很大发生卡拉姆法都没饭！',
+    //   close: true
+    // });
   }
   render() {
     return (
@@ -74,6 +86,7 @@ export default class CommentTextArea extends Component {
           <span className={Style.CommentTextNum}>{this.state.comment.length}/500</span>
           <div className={Style.CommentTextAreaHandle}>
             <span><i onClick={this.showFace} className="fa fa-smile-o"></i></span>
+            <div>留名<input maxLength={7} placeholder="还须少侠留名" ref="name" /></div>
             <button className={Style.CommentTextAreaButton} onClick={this.publish}>发布</button>
           </div>
         </div>

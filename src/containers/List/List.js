@@ -15,11 +15,10 @@ export default class Leave extends Component {
       window.location.href='/';
       return;
     }
-    console.log(type);
     return (
       <div className="container">
       	<TopContainer {...this.props} />
-        <List {...this.props}/>
+        <List {...this.props} data={type}/>
         <Bottom />
       </div>
     );

@@ -61,7 +61,8 @@ body{
   border: 1px solid transparent;
   border-radius: 2px;
   opacity: 0;
-  transition: all .3s ease-out;
+  transition: all .25s ease-out;
+  overflow: hidden;
 }
 .Notification b{
   font-size: 14px;
@@ -293,6 +294,7 @@ body{
   min-height: 50px;
 }
 .Bottom{
+  clear: both;
   position: relative;
   min-width: 1366px;
   margin-top: -100px;
@@ -675,7 +677,7 @@ body{
   background: #f5f5f5;
   padding: 4px;
   z-index: 9999;
-  bottom: 12px;
+  bottom: 32px;
   border: 1px solid #e0e0e0;
   left: 150px;
 }
@@ -690,4 +692,14 @@ body{
 }
 .comment-face-item:active{
   background: #c0c0c0;
+}
+.filter-list-title{
+  border: 1px solid #e0e0e0;
+  font-size: 18px;
+  color: #302f2f;
+  padding: 10px 10px 10px 20px;
+  display: block;
+  background: rgba(255, 255, 255, 0.5);
+  border-left: 2px solid #302f2f;
+  margin-bottom: 30px;
 }
