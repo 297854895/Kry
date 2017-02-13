@@ -9,3 +9,11 @@ export function setRightShow(val) {
     });
   };
 }
+export function setBackColor(data) {
+  return dispatch => {
+    dispatch({
+        type: ActionTypes.SET_NOVEL_BACKCOLOR,
+        data: data
+    });
+  };
+}

@@ -1,0 +1,33 @@
+.NovelListUl{
+  font-size: 14px;
+  padding: 20px 10px 20px 40px;
+  color: #c9c9c9;
+  li{
+    height: 20px;
+    position: relative;
+    transition: color .25s ease-out;
+    cursor: pointer;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+    i{
+      visibility: hidden;
+    }
+  }
+  li:hover{
+    color: #eee;
+    i{
+      visibility: visible;
+    }
+  }
+  li:active{
+    color: #fff;
+  }
+}
+.Page{
+  padding: 0 10px 0 40px;
+  font-size: 14px;
+  color: #c9c9c9;
+}

@@ -1,0 +1,73 @@
+.NovelCommentText{
+  padding: 20px 20px 0 20px;
+  .NovelCommentLeave{
+    padding-top: 8px;
+    height: 29px;
+    font-size: 14px;
+    b{
+      height: 21px;
+      padding: 0 8px;
+      background: rgba(255, 255, 255, .8);
+      color: #302f2f;
+      display: block;
+      float: right;
+      cursor: pointer;
+      -moz-user-select: none; /*火狐*/
+      -webkit-user-select: none; /*webkit浏览器*/
+      -ms-user-select: none; /*IE10*/
+      -khtml-user-select: none; /*早期浏览器*/
+      user-select: none;
+    }
+    b:hover{
+      background: rgba(255, 255, 255, .9);
+    }
+    b:active{
+      background: rgba(255, 255, 255, 1);
+    }
+    label{
+      margin-right: 12px;
+    }
+    input{
+      display: inline-block;
+      vertical-align: top;
+      width: 80px;
+      height: 21px;
+      padding: 2px 5px;
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, .8);
+    }
+  }
+  .NovelCommentWrap{
+    height: 104px;
+    position: relative;
+    background: rgba(255, 255, 255, .8);
+    .NovelCommentWordNum{
+      display: block;
+      bottom: 0;
+      color: #fff;
+      position: absolute;
+      text-align: right;
+      width: 100%;
+      background: rgba(0, 0, 0, .5);
+      height: 14px;
+      line-height: 14px;
+      font-size: 12px;
+    }
+    textarea{
+      width: 310px;
+      height: 90px;
+      resize: none;
+      border: none;
+      padding: 5px;
+      margin: 0;
+      outline: none;
+      background: none;
+    }
+  }
+}
+.NovelComment{
+  padding: 20px 20px;
+}

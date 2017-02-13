@@ -14,12 +14,14 @@
   h1{
     font-size: 24px;
     font-weight: normal;
+    color: #333;
   }
   i{
     margin-right: 6px;
   }
   h5{
     margin: 10px 0 30px 0;
+    color: #666;
   }
   span{
     margin-right: 8px;
@@ -28,6 +30,7 @@
     margin: 16px 0px;
     font-size: 16px;
     text-indent: 2em;
+    color: #444;
   }
 }
 .NovelContainerInside{
@@ -35,12 +38,17 @@
   border: 1px solid #ccc;
 }
 .NovelContainerBar{
-  display: inline-block;
+  display: block;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
   width: 800px;
-  height: 50px;
-  margin-bottom: 50px;
+  height: 100px;
   text-align: center;
-  div{
+  color: #555;
+  padding-bottom: 50px;
+  .NovelContainerBarBt{
     float: left;
     width: 25%;
     height: 50px;
@@ -49,6 +57,16 @@
     border: 1px solid #ccc;
     margin: 0 12.5%;
     cursor: pointer;
+    transition: background-color .2s ease-out, color .2s ease-out;
+    cursor: pointer;
+  }
+  .NovelContainerBarBt:hover{
+    background: #302f2f;
+    color: #fff;
+  }
+  .NovelContainerBarBt:active{
+    background: #1f1f1f;
+    color: #fff;
   }
 }
 .NovelRight{
@@ -75,6 +93,14 @@
   height: 100%;
   padding-top: 20px;
   background:  rgba(0, 0, 0, 0.5);
+  h1{
+    color: #c9c9c9;
+    font-size: 16px;
+    padding-left: 20px;
+    border-left: 2px solid #c9c9c9;
+    margin-left: 20px;
+    margin-top: 7.5px;
+  }
 }
 .NovelRightButtonContainer{
   margin-top: 20px;
@@ -100,12 +126,4 @@
   background: rgba(0, 0,0, 0.5);
   line-height: 39px;
   font-size: 18px;
-}
-.NovelRightTitle{
-  color: #c9c9c9;
-  font-size: 16px;
-  padding-left: 20px;
-  border-left: 2px solid #c9c9c9;
-  margin-left: 20px;
-  margin-top: 7.5px;
 }

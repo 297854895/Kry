@@ -1,0 +1,51 @@
+.NovelSetWrap{
+  padding: 20px;
+  h3{
+    color: #fff;
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    padding-left: 20px;
+  }
+  li{
+    width: 33.33333333333333%;
+    height: 106px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px;
+    position: relative;
+    .colorCurrent{
+      width: 16px;
+      height: 16px;
+      display: block;
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      color: #fff;
+    }
+    div{
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      position: relative;
+      span{
+        position: absolute;
+        height: 16px;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, .5);
+        display: none;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+      }
+    }
+    div:hover{
+      span{
+        display: block;
+      }
+    }
+  }
+}

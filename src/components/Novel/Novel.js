@@ -1,5 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import styles from './Novel.less';
+import NovelList from './NovelList';
+import NovelComment from './NovelComment';
+import NovelSet from './NovelSet';
 export default class Novel extends Component {
   static propTypes = {
     novel: PropTypes.object,
@@ -38,7 +41,7 @@ export default class Novel extends Component {
             <i className="fa fa-book"></i>斗破苍穹
           </span>
           <span key="novelAuth">
-            <i className="fa fa-user"></i>空如也
+            <i className="fa fa-user"></i>天蚕土豆
           </span>
           <span key="novelTime">
             <i className="fa fa-clock-o"></i>2017-01-27
@@ -95,28 +98,15 @@ export default class Novel extends Component {
       </div>
     ];
     const state_type = this.props.novel.get('rightShow');
-    let show_title;
-    if (state_type === 'list') {
-      show_title = [
-        <h1 key="NovelRightList" className={styles.NovelRightTitle}>目录</h1>
-      ]
-    }else if (state_type === 'comment') {
-      show_title = [
-        <h1 key="NovelrightComment" className={styles.NovelRightTitle}>评论</h1>
-      ]
-    }else if (state_type === 'set') {
-      show_title = [
-        <h1 key="NovelRightSet" className={styles.NovelRightTitle}>设置</h1>
-      ]
-    }
+    const current_color = this.props.novel.getIn(['backColor']).color || '#efedee';
     return (
-      <div className={styles.Novel}>
+      <div className={styles.Novel} style={{background: current_color}}>
         <div className={styles.NovelContainer}>
           {novelinfo}
         </div>
         <div className={styles.NovelContainerBar}>
-          <div>上一章</div>
-          <div>下一章</div>
+          <div className={styles.NovelContainerBarBt}>上一章</div>
+          <div className={styles.NovelContainerBarBt}>下一章</div>
         </div>
         <div className={styles.NovelRight} ref="rightMenu">
           <ul className={styles.NovelRightButtonContainer}>
@@ -131,7 +121,7 @@ export default class Novel extends Component {
             </li>
           </ul>
           <div className={styles.NovelRightContainer}>
-            {show_title}
+            {state_type === 'list' ? <NovelList {...this.props} /> : state_type === 'comment' ? <NovelComment {...this.props} /> : <NovelSet {...this.props} />}
           </div>
         </div>
       </div>
