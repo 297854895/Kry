@@ -1,3 +1,5 @@
+import publicCss from '../static/css/public.css';
+import atomCodeStyle from '../static/css/atom-one-dark.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
