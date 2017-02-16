@@ -3,16 +3,15 @@ import TitleIcon from '../TitleIcon/TitleIcon';
 import {Link} from 'react-router';
 import Block from '../Block/Block';
 export default class ArticleList extends Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
-    this.context;
   }
   LinkTo = (search) => {
     this.props.clientBoundAC.UpdateClientArticleShowInfo({
       type: search.type,
       id: search.id
     });
-    this.context.router.push({pathname: '/article', search: `?type=${search.type}&${search.type === 'web' ? 'w' : 'a'}id=${search.id}`});
+    this.props.router.push({pathname: '/article', search: `?type=${search.type}&${search.type === 'web' ? 'w' : 'a'}id=${search.id}`});
   }
   render() {
     const owData = [
@@ -64,7 +63,4 @@ export default class ArticleList extends Component {
       </div>
     );
   }
-}
-ArticleList.contextTypes = {
-  router: Object
 }

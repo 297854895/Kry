@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import Style from './CommentTextArea.less';
 import Notification from '../Notification/Notification.js';
 export default class CommentTextArea extends Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
-    this.context;
     this.state = {
       faceShow: false,
       comment: ''
@@ -94,7 +93,4 @@ export default class CommentTextArea extends Component {
       </div>
     );
   }
-}
-CommentTextArea.contextTypes = {
-  router: Object
 }

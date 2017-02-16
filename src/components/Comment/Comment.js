@@ -4,9 +4,8 @@ import Style from './Comment.less';
 import CommentList from './CommentList';
 import CommentTextArea from './CommentTextArea';
 export default class Comment extends Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
-    this.context;
   }
   componentDidMount = () => {
     this.props.clientBoundAC.getArticleComment('MAIN', 8888);
@@ -25,7 +24,4 @@ export default class Comment extends Component {
       </div>
     );
   }
-}
-Comment.contextTypes = {
-  router: Object
 }

@@ -3,9 +3,8 @@ import Style from './CommentList.less';
 import Page from '../Page/Page';
 import CommentListItem from './CommentListItem';
 export default class CommentList extends Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
-    this.context;
   }
   render() {
     const com = this.props.client.getIn(['currentArticleComment']);
@@ -24,7 +23,4 @@ export default class CommentList extends Component {
       </ul>
     );
   }
-}
-CommentList.contextTypes = {
-  router: Object
 }

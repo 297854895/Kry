@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import Style from './RecentCommentItem.less';
 export default class RecentCommentItem extends Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
-    this.context;
   }
   render() {
     return (
-      <div className={Style.RecentCommentItem}>
+      <div className={Style.RecentCommentItem} key={'RecentCommentItem' + this.props.data.cid}>
         <div className={Style.RecentCommentItemIn}>
           <span className={Style.RecentCommentItemImg}>
             <img src="/static/img/userdefault.png"/>
@@ -19,7 +18,4 @@ export default class RecentCommentItem extends Component {
       </div>
     );
   }
-}
-RecentCommentItem.contextTypes = {
-  router: Object
 }

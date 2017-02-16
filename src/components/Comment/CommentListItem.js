@@ -3,9 +3,8 @@ import Style from './CommentListItem.less';
 import PageMin from '../PageMin/PageMin';
 import Notification from '../Notification/Notification.js';
 export default class CommentListItem extends Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
-    this.context;
     this.state = {
       commentShow: false,
       faceShow: false,
@@ -110,7 +109,4 @@ export default class CommentListItem extends Component {
       </li>
     );
   }
-}
-CommentListItem.contextTypes = {
-  router: Object
 }
