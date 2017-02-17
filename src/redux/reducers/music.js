@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 const initState = {
   menuShow: false,
   musicShow: false,
+  musicMenuType: 'playList',
   play: false
 };
 export default function(state = fromJS(initState), action) {

@@ -4,9 +4,11 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as clientAC from '../../redux/actions/client';
 import * as commonAC from '../../redux/actions/common';
+import * as musicAC from '../../redux/actions/music';
+
 @connect(
   state => ({client: state.client, music: state.music}),
-  dispatch=>({clientBoundAC: bindActionCreators(clientAC, dispatch), commonBoundAC: bindActionCreators(commonAC, dispatch)}))
+  dispatch=>({clientBoundAC: bindActionCreators(clientAC, dispatch), commonBoundAC: bindActionCreators(commonAC, dispatch), musicBoundAc: bindActionCreators(musicAC, dispatch)}))
 export default class Public extends Component {
   render() {
     const children = this.props;

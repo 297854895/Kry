@@ -23,10 +23,41 @@
     }
     .musicProgress{
       display: block;
+      position: relative;
       height: 2px;
       background: #fff;
       vertical-align: middle;
       margin: 20px 0;
+      .musicProgressTimeinfo{
+        position: absolute;
+        right: 0px;
+        font-size: 14px;
+        padding: 6px;
+      }
+      .musicProgressTimeBt{
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        border: 1px solid #999;
+        border-radius: 50%;
+        background: #fff;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        div{
+          position: absolute;
+          height: 5px;
+          width: 5px;
+          border-radius: 50%;
+          background: #16a095;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
     }
   }
   .musicPane{
@@ -55,11 +86,19 @@
       display: block;
       width: 130px;
       height: 130px;
+      border-radius: 50%;
       background: #000;
       left: 0;
       top: 0;
       img{
-        width: inherit;
+        width: 55%;
+        position: absolute;
+        border-radius: 50%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
       }
     }
   }
@@ -82,16 +121,27 @@
     transition: transform .5s ease-out;
   }
 }
-.musicMenuIcon {
+.musicMenuIconWrap{
   position: absolute;
-  width: 24px;
-  height: 24px;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  i {
-    font-size: 24px;
+  width: 150px;
+  top: 6px;
+  right: 0;
+  -moz-user-select: none; /*火狐*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -ms-user-select: none; /*IE10*/
+  -khtml-user-select: none; /*早期浏览器*/
+  user-select: none;
+  .musicMenuIcon {
+    width: 50px;
+    height: 20px;
+    float: left;
+    cursor: pointer;
+    text-align: center;
     color: #e0e0e0;
+    font-size: 12px;
+  }
+  .musicMenuIcon:active{
+    color: #ccc;
   }
 }
 .musicMenuContainer {
@@ -113,6 +163,50 @@
   font-size: 16px;
   line-height: 50px;
   padding-left: 20px;
+  vertical-align: top;
+  .musicSearchWrap{
+    display: inline-block;
+    margin-right: 50px;
+    margin-top: 10px;
+    background: #289088;
+    height: 30px;
+    float: right;
+    border-radius: 20px;
+    position: relative;
+    width: 240px;
+    input{
+      color: #eee;
+      width: 200px;
+      border: none;
+      outline: none;
+      height: 20px;
+      padding: 0;
+      margin: 0;
+      background: none;
+      position: absolute;
+      padding-left: 12px;
+      font-size: 12px;
+      line-height: 20px;
+      top: 5px;
+    }
+    i{
+      margin: 0;
+      float: right;
+      line-height: 28px;
+      margin-right: 18px;
+      color: #ccc;
+      cursor: pointer;
+    }
+    i:hover{
+      color: #fff;
+    }
+    i:active{
+      color: #bbb;
+    }
+  }
+  i{
+    margin-right: 8px;
+  }
 }
 .musicMenu {
   width: 100%;
