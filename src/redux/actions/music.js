@@ -69,6 +69,8 @@ export function searchByKey(params) {
           reslove(data);
         }
       }).catch(error => {
+        timerNum = 0;
+        clearInterval(timer);
         reject(error);
       });
     });
@@ -86,7 +88,7 @@ export function searchByKey(params) {
         type: ActionTypes.MUSIC_SEARCH,
         data: data.result ? data.result : {songCount: 0, songs: []}
       });
-    }, (type) => {
+    }).catch((type) => {
       //handle error
       if (type === 'timeout') {
         dispatch({
