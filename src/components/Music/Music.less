@@ -16,6 +16,8 @@
     color: #fff;
     i {
       margin: 0 10px;
+      width: 20px;
+      text-align: center;
       cursor: pointer;
     }
     i:active{
@@ -25,37 +27,45 @@
       display: block;
       position: relative;
       height: 2px;
-      background: #fff;
+      background: rgba(0,0,0,0.3);
       vertical-align: middle;
       margin: 20px 0;
       .musicProgressTimeinfo{
         position: absolute;
         right: 0px;
         font-size: 14px;
-        padding: 6px;
+        padding: 6px 0 6px 6px;
       }
-      .musicProgressTimeBt{
+      .musicProgressIn{
+        width: 0%;
+        height: 2px;
         position: absolute;
-        width: 11px;
-        height: 11px;
-        border: 1px solid #999;
-        border-radius: 50%;
+        left: 0px;
+        top: 0px;
         background: #fff;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        div{
+        .musicProgressTimeBt{
           position: absolute;
-          height: 5px;
-          width: 5px;
+          width: 11px;
+          height: 11px;
+          border: 1px solid #999;
           border-radius: 50%;
-          background: #16a095;
+          background: #fff;
           top: 0;
           bottom: 0;
-          left: 0;
-          right: 0;
+          right: -5.5px;
           margin: auto;
+          div{
+            position: absolute;
+            height: 5px;
+            width: 5px;
+            border-radius: 50%;
+            background: #16a095;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+          }
         }
       }
     }
@@ -90,10 +100,37 @@
       background: #000;
       left: 0;
       top: 0;
-      img{
+      div{
         width: 55%;
+        height: 55%;
         position: absolute;
         border-radius: 50%;
+        background: #9e2925;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        span{
+          display: block;
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          border-radius: 50%;
+          background: #000;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+        }
+      }
+      img{
+        width: 55%;
+        height: 55%;
+        position: absolute;
+        border-radius: 50%;
+        border-width: 0;
         left: 0;
         right: 0;
         top: 0;
@@ -213,32 +250,40 @@
   height: 450px;
   border-top: 1px solid #3f3f3f;
   border-bottom: 1px solid #3f3f3f;
+  ul{
+    height: 448px;
+    overflow: auto;
+  }
   .musicPlayListItem:nth-child(even){
     background: rgba(0,0,0,0.15);
   }
   .musicPlayListItem{
     font-size: 14px;
     height: 32px;
-    padding:0 20px;
+    padding:0 20px 0 10px;
     line-height: 32px;
     color: #eee;
     position: relative;
     span{
       display: block;
       float: left;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      height: 32px;
     }
     .musicNum{
-      width: 30px;
+      width: 40px;
       text-align: center;
     }
     .musicName{
-      width: 250px;
+      width: 240px;
     }
     .song{
-      width: 100px;
+      width: 140px;
+      padding-left: 10px;
     }
     .handle{
-      width: 162px;
+      width: 102px;
       i{
         margin: 0 10px;
         cursor: pointer;
@@ -249,3 +294,30 @@
     }
   }
 }
+.noInfo{
+  color: #eee;
+
+}
+// /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+// ::-webkit-scrollbar
+// {
+//     width: 12px;
+//     height: 12px;
+//     // background-color: #F5F5F5;
+// }
+//
+// /*定义滚动条轨道 内阴影+圆角*/
+// ::-webkit-scrollbar-track
+// {
+//     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//     // border-radius: 10px;
+//     // background-color: #F5F5F5;
+// }
+//
+// /*定义滑块 内阴影+圆角*/
+// ::-webkit-scrollbar-thumb
+// {
+//     // border-radius: 10px;
+//     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+//     background-color: #787778;
+// }
