@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TitleIcon from '../TitleIcon/TitleIcon';
-import {Link} from 'react-router';
 import Block from '../Block/Block';
+
 export default class ArticleList extends Component {
   constructor(props) {
     super(props);

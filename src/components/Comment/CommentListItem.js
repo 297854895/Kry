@@ -96,7 +96,7 @@ export default class CommentListItem extends Component {
             <span className={Style.CommentTextNum}>{this.state.comment.length}/200</span>
             <div className={Style.CommentTextAreaHandle}>
               <span><i onClick={this.showFace} className="fa fa-smile-o"></i></span>
-              <div>留名<input maxLength={7} placeholder="还须少侠留名" ref="name" /></div>
+              <div><input maxLength={7} placeholder="少侠请留名..." ref="name" /></div>
               <button className={Style.CommentTextAreaButton} onClick={this.publish}>回复</button>
             </div>
             {this.state.faceShow ? this.returnFace() : ''}

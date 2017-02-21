@@ -6,7 +6,7 @@ export default class Like extends Component {
     return (
       <div key="like-container" className={Style.Like}>
         <span>
-          <i className="fa fa-heart-o"></i><b>赞</b>
+          <i className="fa fa-heart-o"></i>
         </span>
       </div>
     );

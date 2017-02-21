@@ -58,21 +58,6 @@ export default class CommentTextArea extends Component {
       return;
     }
     console.log({comment: comment, name: name});
-    // Notification({
-    //   type: 'warn',
-    //   context: '很大发生卡拉姆法都没饭！',
-    //   close: true
-    // });
-    // Notification({
-    //   type: 'danger',
-    //   context: '很大发生卡拉姆法都没饭！',
-    //   close: true
-    // });
-    // Notification({
-    //   type: 'info',
-    //   context: '很大发生卡拉姆法都没饭！',
-    //   close: true
-    // });
   }
   render() {
     return (
@@ -85,7 +70,7 @@ export default class CommentTextArea extends Component {
           <span className={Style.CommentTextNum}>{this.state.comment.length}/500</span>
           <div className={Style.CommentTextAreaHandle}>
             <span><i onClick={this.showFace} className="fa fa-smile-o"></i></span>
-            <div>留名<input maxLength={7} placeholder="还须少侠留名" ref="name" /></div>
+            <div><input maxLength={7} placeholder="少侠请留名..." ref="name" /></div>
             <button className={Style.CommentTextAreaButton} onClick={this.publish}>发布</button>
           </div>
         </div>
