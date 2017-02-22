@@ -8,6 +8,9 @@ import Novel from './containers/Novel/Novel';
 import Article from './containers/Article/Article';
 import Leave from './containers/Leave/Leave';
 import List from './containers/List/List';
+
+import Wzq from './components/Wzq/Wzq';
+
 export default () => {
   /**
    * Please keep routes in alphabetical order
@@ -20,6 +23,7 @@ export default () => {
       <Route path="/leave" component={Leave} />
       <Route path="/novel" component={Novel} />
       <Route path="/list" component={List} />
+      <Route path="/wzq" component={Wzq} />
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />
     </Route>

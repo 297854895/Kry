@@ -13,7 +13,7 @@ export default class Leave extends Component {
     return (
       <div className="container">
       	<TopContainer {...this.props}/>
-        <Leave_ />
+        <Leave_ {...this.props}/>
         <Bottom />
       </div>
     );
