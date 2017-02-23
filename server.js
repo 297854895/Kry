@@ -5,14 +5,14 @@ var config = require('./webpack.config');
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
-  historyApiFallback: true
-  // proxy: {
-  //   '/search/*': {
-  //     target: 'http://s.music.163.com/',
-  //     changeOrigin: true,
-  //     secure: false
-  //   }
-  // }
+  historyApiFallback: true,
+  proxy: {
+    '/api/*': {
+      target: 'http://localhost:3333',
+      changeOrigin: true,
+      secure: false
+    }
+  }
 }).listen(7777, 'localhost', function (err, result) {
   if (err) {
     return console.log(err);
