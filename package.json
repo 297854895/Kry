@@ -30,6 +30,7 @@
     "jsonp-fallback": "^1.1.1",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
+    "marked": "^0.3.6",
     "precss": "^1.4.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
