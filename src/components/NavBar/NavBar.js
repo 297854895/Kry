@@ -47,31 +47,31 @@ export default class NavBar extends Component {
     const webTec = [
       <ul>
         <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
         </li>
         <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
         </li>
         <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
         </li>
         <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
         </li>
         <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
         </li>
         <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
         </li>
         <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
         </li>
         <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
         </li>
         <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&wid=8888">我是标题标题</Link>
+          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
         </li>
       </ul>];
     const _type = window.location.search.substring(window.location.search.indexOf('type') + 5).substring(0, 3);

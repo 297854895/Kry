@@ -20,7 +20,7 @@ export default class Article extends Component {
           articleinfo.type = item.substring(item.indexOf('type=') + 5);
           return;
         } else if (item.indexOf('id=') > -1) {
-          articleinfo.id = item.substring(item.indexOf('id=') + 3);
+          articleinfo._id = item.substring(item.indexOf('_id=') + 4);
           return;
         }
       });
