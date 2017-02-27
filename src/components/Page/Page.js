@@ -14,6 +14,7 @@ export default class Page extends Component {
       const newPage = {...this.props};
       newPage.data.current = page;
       this.setState(newPage);
+      if (this.props.togglePage) this.props.togglePage(page);
     }
   }
   nextPage = (evt) => {
@@ -29,6 +30,7 @@ export default class Page extends Component {
         newPage.data.current -= 1;
       }
       this.setState(newPage);
+      if (this.props.togglePage) this.props.togglePage(newPage.data.current);
     }
   }
   initialPage = () => {
@@ -48,6 +50,9 @@ export default class Page extends Component {
     let domCurrent = 'false';
     if (pageTotal <= 7) {
       for (let num = 1; num < 8; num ++ ) {
+        if (num > pageTotal) {
+          break;
+        }
         if (num === pageCurrent) {
           className += ` ${styles.pageActive}`;
           domCurrent = 'true';

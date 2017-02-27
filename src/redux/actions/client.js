@@ -19,6 +19,64 @@ export function UpdateClientValue(data) {
     });
   };
 }
+//get article details
+export function getArticleDetails(params) {
+  return dispatch => {
+    axios.get('/front/article', {params})
+      .then(resp => {
+        if (resp.status === 200) {
+          dispatch({
+            type: ActionTypes.GET_ARTICLE_DETAILS,
+            data: resp.data
+          })
+        } else {
+          console.log('getArticleDetails error');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+}
+//get home page article
+export function getHomePageArticle(params) {
+  return dispatch => {
+    axios.get('/front/article', {params : params})
+      .then(resp => {
+        if (resp.status === 200) {
+          dispatch({
+            type: ActionTypes.GET_HOMEPAGE_ARTICLE,
+            data: resp.data
+          })
+        } else {
+          console.log('getHomePageArticle error');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+}
+//get articlelist by type {web or word}
+export function getArticleListByType(path, params) {
+  return dispatch => {
+    axios.get('/front/article', {params : params})
+      .then(resp => {
+        if (resp.status === 200) {
+          dispatch({
+            type: ActionTypes[path],
+            data: resp.data
+          })
+        } else {
+          console.log('getArticleListByType error');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+}
+
 //getArticle comment
 export function getArticleComment(type, articleid, cid) {
   const data = [

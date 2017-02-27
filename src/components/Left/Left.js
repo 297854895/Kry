@@ -11,10 +11,10 @@ export default class Left extends Component {
     return (
       <div key="Left" className="Left" style={{width: this.props._width ? this.props._width : '50%'}}>
         <div className="Center-margin">
-          <Intro />
-          <Hot />
-          <Tag />
-          <RecentComment />
+          <Intro {...this.props}/>
+          <Hot {...this.props}/>
+          <Tag {...this.props}/>
+          <RecentComment {...this.props}/>
         </div>
       </div>
     );

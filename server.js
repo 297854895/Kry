@@ -7,7 +7,7 @@ new WebpackDevServer(webpack(config), {
   hot: true,
   historyApiFallback: true,
   proxy: {
-    '/api/*': {
+    '/front/*': {
       target: 'http://localhost:3333',
       changeOrigin: true,
       secure: false

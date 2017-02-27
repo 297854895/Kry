@@ -1,20 +1,33 @@
 import React, {Component} from 'react';
 import Block from '../Block/Block';
+import Loading from '../Loading/Loading';
+import {Link} from 'react-router';
+
 export default class Hot extends Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    this.props.clientBoundAC.getArticleListByType('GET_ARTICLE_RECOMMEND', {type: 'recommend'});
+  }
   render() {
+    let recommendList = this.props.client.get('articleRecommend');
+    const output = []
+    if (recommendList.size === 0) {
+      output.push(<div key="recommendList-loading" style={{height: '50px'}}></div>);
+      output.push(<Loading key="recommendList-loading-loa" />);
+    } else {
+      recommendList.forEach((item, idx) => {
+        output.push(
+          <li title={item.get('title')} className="readList" key={`hot-readList-${idx}`}>
+            <div></div><b style={{background: `url("/static/img/recommendnum.png") 0 -${idx * 31}px no-repeat`}}></b><Link to={`/article?type=${item.get('type')}&_id=${item.get('_id')}`}>{item.get('title')}</Link>
+          </li>
+        );
+      });
+    }
     const readList = [
       <ul key="hot-readlist" style={{marginTop: '20px', marginBottom: '50px'}}>
-        <li className="readList" key="hot-readList-0"><div></div><b></b><a href="javascript:;">是几款介绍</a></li>
-        <li className="readList" key="hot-readList-1"><div></div><b style={{background: 'url("/static/img/recommendnum.png") 0 -31px no-repeat'}}></b><a href="javascript:;">是几款介绍</a></li>
-        <li className="readList" key="hot-readList-2"><div></div><b style={{background: 'url("/static/img/recommendnum.png") 0 -62px no-repeat'}}></b><a href="javascript:;">是几款介绍</a></li>
-        <li className="readList" key="hot-readList-3"><div></div><b style={{background: 'url("/static/img/recommendnum.png") 0 -93px no-repeat'}}></b><a href="javascript:;">是几款介绍</a></li>
-        <li className="readList" key="hot-readList-4"><div></div><b style={{background: 'url("/static/img/recommendnum.png") 0 -124px no-repeat'}}></b><a href="javascript:;">是几款介绍</a></li>
-        <li className="readList" key="hot-readList-5"><div></div><b style={{background: 'url("/static/img/recommendnum.png") 0 -155px no-repeat'}}></b><a href="javascript:;">是几款介绍</a></li>
-        <li className="readList" key="hot-readList-6"><div></div><b style={{background: 'url("/static/img/recommendnum.png") 0 -186px no-repeat'}}></b><a href="javascript:;">是几款介绍</a></li>
-        <li className="readList" key="hot-readList-7"><div></div><b style={{background: 'url("/static/img/recommendnum.png") 0 -219px no-repeat'}}></b><a href="javascript:;">是几款介绍</a></li>
+        {output}
       </ul>
     ];
     const showChild = [
