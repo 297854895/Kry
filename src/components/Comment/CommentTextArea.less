@@ -18,6 +18,19 @@
       width: inherit;
       height: inherit;
     }
+    span{
+      color: #666;
+      font-size: 14px;
+      text-align: center;
+      display: block;
+      cursor: pointer;
+    }
+    span:hover{
+      color: #333;
+    }
+    span:active{
+      color: #111;
+    }
   }
   .CommentTextAreaInput{
     width: 839px;
@@ -98,5 +111,55 @@
         color: #16A085;
       }
     }
+  }
+}
+.CommentUserPic{
+  display: none;
+  position: absolute;
+  width: 200px;
+  height: 226px;
+  top: 30px;
+  border: 1px solid transparent;
+  background: #302f2f;
+  border-radius: 4px;
+  .sanjiao{
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 10px solid #302f2f;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: 10px;
+    left: -10px;
+  }
+  .picEach{
+    display: inline-block;
+    vertical-align: top;
+    height: 50px;
+    width: 50px;
+    margin: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    line-height: 48px;
+    color: #fff;
+    transition: border-color .2s ease-out;
+    img{
+      height: 48px;
+      width: 48px;
+    }
+  }
+  .picEach:hover{
+    border-color: #eee;
+  }
+  span{
+    display: block;
+    text-align: center;
+    color: #ccc;
+    cursor: pointer;
+    transition: color .2s ease-out;
+  }
+  span:hover{
+    color: #fff;
   }
 }

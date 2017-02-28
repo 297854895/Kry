@@ -16,6 +16,9 @@ export default class List extends Component {
   componentDidMount() {
     this.props.clientBoundAC.getArticleListByType('GET_ARTICLE_BYTYPE', {filterKey: this.props.data, index: 1, size: 10, type: 'list'});
   }
+  componentDidUpdate() {
+    scrollTo(0,352);
+  }
   returnTag(data) {
     let str = '';
     data.forEach((item) => {
@@ -28,9 +31,9 @@ export default class List extends Component {
   }
   render() {
     let articledata = this.props.client.getIn(['articleListByType', 'data']);
-    if (!articledata) {
-      return <div>Loading...</div>
-    }
+    if (!articledata) return (<div key="loading-article-list" style={{width: '800px', height: '480px', position: 'relative'}}>
+      <Loading />
+    </div>);
     articledata = articledata.size > 0 ? articledata.toJS() : [];
     const pageData = this.props.client.getIn(['articleListByType']);
     const output = [];
@@ -48,7 +51,7 @@ export default class List extends Component {
                   <i className="fa fa-clock-o"></i>&nbsp;{item.createTime.substring(0, 10)}
                 </span>
                 <span>
-                  <i className="fa fa-tags"></i>{this.returnTag(item.tag.length > 0 ? item.tag : [])}
+                  <i className="fa fa-tags"></i>&nbsp;{this.returnTag(item.tag.length > 0 ? item.tag : [])}
                 </span>
               </div>
               <p>{item.intro}</p>
@@ -62,7 +65,8 @@ export default class List extends Component {
         <div key="Right" className="Right" style={{width: '800px'}}>
           <div className="Center-margin" style={{margin: '0 50px 0 0'}}>
             <span className="filter-list-title">
-              {this.props.data === 'web' ? '前端攻城' : '污文弄墨'}
+              <img src={this.props.data === 'web' ? "/static/img/book.png" : "/static/img/flower.png"} />
+              <span>{this.props.data === 'web' ? '前端攻城' : '污文弄墨'}</span>
             </span>
             {output}
             <Page data={{total: pageData.get('total'), size: pageData.get('size'), current: pageData.get('index')}} togglePage={this.togglePage}/>

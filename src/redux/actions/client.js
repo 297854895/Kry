@@ -19,6 +19,14 @@ export function UpdateClientValue(data) {
     });
   };
 }
+export function resetArticleDetails() {
+  return dispatch => {
+    dispatch({
+      type: ActionTypes.GET_ARTICLE_DETAILS,
+      data: {}
+    })
+  };
+}
 //get article details
 export function getArticleDetails(params) {
   return dispatch => {
@@ -36,7 +44,7 @@ export function getArticleDetails(params) {
       .catch(err => {
         console.log(err);
       })
-  }
+  };
 }
 //get home page article
 export function getHomePageArticle(params) {
@@ -50,6 +58,24 @@ export function getHomePageArticle(params) {
           })
         } else {
           console.log('getHomePageArticle error');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+}
+export function getArticleListTop9() {
+  return dispatch => {
+    axios.get('/front/article', {params : {type: 'type'}})
+      .then(resp => {
+        if (resp.status === 200) {
+          dispatch({
+            type: ActionTypes.GET_ARTICLE_BYTYPE_LIST,
+            data: resp.data,
+          })
+        } else {
+          console.log('getArticleListTop9 error');
         }
       })
       .catch(err => {

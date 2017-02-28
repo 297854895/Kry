@@ -10,6 +10,15 @@ export default class Hot extends Component {
   componentDidMount() {
     this.props.clientBoundAC.getArticleListByType('GET_ARTICLE_RECOMMEND', {type: 'recommend'});
   }
+  LinkTo = (search) => {
+    this.props.clientBoundAC.resetArticleDetails();
+    this.props.clientBoundAC.UpdateClientArticleShowInfo({
+      type: search.type,
+      _id: search._id
+    });
+    this.props.router.push({pathname: '/article', search: `?type=${search.type}&_id=${search._id}`});
+    this.props.clientBoundAC.getArticleDetails({type: 'details', _id: search._id});
+  }
   render() {
     let recommendList = this.props.client.get('articleRecommend');
     const output = []
@@ -20,7 +29,7 @@ export default class Hot extends Component {
       recommendList.forEach((item, idx) => {
         output.push(
           <li title={item.get('title')} className="readList" key={`hot-readList-${idx}`}>
-            <div></div><b style={{background: `url("/static/img/recommendnum.png") 0 -${idx * 31}px no-repeat`}}></b><Link to={`/article?type=${item.get('type')}&_id=${item.get('_id')}`}>{item.get('title')}</Link>
+            <div></div><b style={{background: `url("/static/img/recommendnum.png") 0 -${idx * 31}px no-repeat`}}></b><a style={{cursor: 'pointer'}} onClick={this.LinkTo.bind(this, item.toJS())}>{item.get('title')}</a>
           </li>
         );
       });

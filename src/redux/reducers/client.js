@@ -6,7 +6,8 @@ const initState = {
   homePageArticleList: {},
   articleDetails: {},
   articleListByType: {},
-  articleRecommend: []
+  articleRecommend: [],
+  articleListTop9: {}
 };
 export default function(state = fromJS(initState), action) {
   switch (action.type) {
@@ -24,6 +25,8 @@ export default function(state = fromJS(initState), action) {
       return state.updateIn(['articleListByType'], () => {return fromJS(action.data)});
     case ActionTypes.GET_ARTICLE_RECOMMEND:
       return state.updateIn(['articleRecommend'], () => {return fromJS(action.data)});
+    case ActionTypes.GET_ARTICLE_BYTYPE_LIST:
+      return state.updateIn(['articleListTop9'], () => {return fromJS(action.data)});
     default:
       return state;
   }

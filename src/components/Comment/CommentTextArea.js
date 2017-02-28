@@ -59,11 +59,23 @@ export default class CommentTextArea extends Component {
     }
     console.log({comment: comment, name: name});
   }
+  toggleUserPicShow = () => {
+    const status = this.refs.changePic.style.display;
+    if (!status || status === 'none') {
+      this.refs.changePic.style.display = 'block';
+    } else {
+      this.refs.changePic.style.display = 'none';
+    }
+  }
+  changeUserPic = (src) => {
+    this.refs.currentPic.src = src;
+  }
   render() {
     return (
       <div className={Style.CommentTextArea}>
         <span className={Style.CommentTextAreaUserPic}>
-          <img src="/static/img/userdefault.png"/>
+          <img ref="currentPic" src="/static/img/userpic/1.png"/>
+          <span onClick={this.toggleUserPicShow}>换头像</span>
         </span>
         <div className={Style.CommentTextAreaInput}>
           <textarea maxLength={500} onChange={this.commentChange} ref="textarea" placeholder="敢问少侠有何高见..."></textarea>
@@ -75,6 +87,37 @@ export default class CommentTextArea extends Component {
           </div>
         </div>
         {this.state.faceShow ? this.returnFace() : ''}
+        <div className={Style.CommentUserPic} ref="changePic">
+          <div className={Style.sanjiao}></div>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/1.png")}>
+            默认
+          </div>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/2.jpg")}>
+            <img src="/static/img/userpic/2.jpg"/>
+          </div>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/3.jpg")}>
+            <img src="/static/img/userpic/3.jpg"/>
+          </div>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/4.jpg")}>
+            <img src="/static/img/userpic/4.jpg"/>
+          </div>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/5.jpg")}>
+            <img src="/static/img/userpic/5.jpg"/>
+          </div>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/6.jpg")}>
+            <img src="/static/img/userpic/6.jpg"/>
+          </div>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/7.jpg")}>
+            <img src="/static/img/userpic/7.jpg"/>
+          </div>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/8.jpg")}>
+            <img src="/static/img/userpic/8.jpg"/>
+          </div>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/9.jpg")}>
+            <img src="/static/img/userpic/9.jpg"/>
+          </div>
+          <span onClick={this.toggleUserPicShow}>关闭</span>
+        </div>
       </div>
     );
   }

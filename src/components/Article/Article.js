@@ -3,6 +3,7 @@ import TitleIcon from '../TitleIcon/TitleIcon';
 import Block from '../Block/Block';
 import Like from '../Like/Like';
 import Comment from '../Comment/Comment';
+import Loading from '../Loading/Loading';
 import Style from './Article.less';
 import {fromJS} from 'immutable';
 import marked from 'marked';
@@ -39,12 +40,17 @@ export default class Article extends Component {
       });
       this.refs.markdownText.innerHTML = marked(this.props.client.getIn(['articleDetails','content']));
     }
+    scrollTo(0,0);
   }
   render() {
     let ArticleData = this.props.client.get('articleDetails');
     const Article_ = [];
     if (ArticleData.size === 0 ) {
-      Article_.push(<div key="loading-article">Loading...</div>);
+      Article_.push(
+        <div key="loading-article" style={{width: '960px', height: '480px', position: 'relative'}}>
+          <Loading />
+        </div>
+      );
     } else {
       ArticleData = ArticleData.toJS();
       Article_.push(

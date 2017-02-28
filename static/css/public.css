@@ -706,3 +706,13 @@ body{
   border-left: 2px solid #302f2f;
   margin-bottom: 30px;
 }
+.filter-list-title img{
+  vertical-align: top;
+  height: 40px;
+}
+.filter-list-title span{
+  display: inline-block;
+  line-height: 40px;
+  padding-left: 32px;
+  font-weight: bold;
+}

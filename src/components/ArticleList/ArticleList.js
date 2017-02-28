@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TitleIcon from '../TitleIcon/TitleIcon';
+import Loading from '../Loading/Loading';
 import Block from '../Block/Block';
 
 export default class ArticleList extends Component {
@@ -13,7 +14,7 @@ export default class ArticleList extends Component {
     this.props.clientBoundAC.UpdateClientArticleShowInfo({
       type: search.type,
       _id: search._id
-    })
+    });
     this.props.router.push({pathname: '/article', search: `?type=${search.type}&_id=${search._id}`});
   }
   parseTagFn = (tag) => {
@@ -26,7 +27,9 @@ export default class ArticleList extends Component {
   render() {
     let articleList = this.props.client.getIn(['homePageArticleList']);
     articleList = articleList.size > 0 ? articleList.toJS() : '';
-    if (!articleList) return null;
+    if (!articleList) return (<div key="loading-article-list" style={{width: '800px', height: '480px', position: 'relative'}}>
+      <Loading />
+    </div>);
     const showChild = [];
     for (let data of articleList.data) {
       showChild.push(

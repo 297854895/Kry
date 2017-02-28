@@ -1,29 +1,44 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
+import LoadingW from '../LoadingW/LoadingW';
 import styles from './NavBar.less';
 export default class NavBar extends Component {
   constructor(props) {
     super(props);
   }
   componentDidMount = () =>{
-    let winWidth = document.querySelectorAll('.NavBar')[0].offsetWidth;
-    const Menu = document.querySelectorAll('.NavBar-hide-menu');
+    this.setHideMenuWidth();
+    window.onresize = () => {
+      this.setHideMenuWidth();
+    }
+    this.props.clientBoundAC.getArticleListTop9();
+  }
+  LinkTo = (search) => {
+    this.props.clientBoundAC.resetArticleDetails();
+    this.props.clientBoundAC.UpdateClientArticleShowInfo({
+      type: search.type,
+      _id: search._id
+    });
+    this.props.router.push({pathname: '/article', search: `?type=${search.type}&_id=${search._id}`});
+    this.props.clientBoundAC.getArticleDetails({type: 'details', _id: search._id});
+  }
+  setHideMenuWidth = () => {
+    let winWidth = this.refs.NavBar.offsetWidth;
+    const Menu = [this.refs.webHideMenu, this.refs.wordHideMenu, this.refs.novelHideMenu];
     //检测页面中是否存在滚动条
     if(document.body.style.overflow!="hidden"&&document.body.scroll!="no"&&document.body.offsetHeight<document.documentElement.clientHeight){
       //减去滚动条宽度
       winWidth -= this.getScrollbarWidth();
     }
-    Menu[0].style.width = winWidth + 'px';
-    Menu[1].style.width = winWidth + 'px';
-    Menu[2].style.width = winWidth + 'px';
     let _left = (winWidth - 1200)/2;
     if(winWidth <= 1200){
       _left = 0;
     }
-    Menu[0].style.left =  0 - 700 - _left  + 'px';
-    Menu[1].style.left =  0 - 825 - _left  + 'px';
-    Menu[2].style.left =  0 - 950 - _left  + 'px';
+    Menu.forEach((item, idx) => {
+      item.style.width = `${winWidth}px`;
+      item.style.left = `-${700 + 125 * idx + _left}px`;
+    });
   }
   getScrollbarWidth = () => {
     //获取滚动条宽度
@@ -40,43 +55,39 @@ export default class NavBar extends Component {
     return scrollbarWidth;
   }
   render() {
+    const articleListTop9 = this.props.client.get('articleListTop9');
+    const webTec = [];
+    const wordTec = [];
+    if (articleListTop9.size === 0) {
+      webTec.push(<LoadingW key="web-list-loading-w" />);
+      wordTec.push(<LoadingW key="word-list-loading-w"/>);
+    } else {
+      let output = [];
+      articleListTop9.get('web').toJS().forEach((item) => {
+        output.push(<li key={`web-list-top-${item._id}`}><i className="fa fa-fire"></i><a onClick={this.LinkTo.bind(this, item)}>{item.title}</a></li>);
+      });
+      webTec.push(
+        <ul key="web-list-top">
+          {output}
+        </ul>
+      );
+      output = [];
+      articleListTop9.get('word').toJS().forEach((item) => {
+        output.push(<li key={`word-list-top-${item._id}`}><i className="fa fa-fire"></i><a onClick={this.LinkTo.bind(this, item)}>{item.title}</a></li>);
+      });
+      wordTec.push(
+        <ul key="word-list-top">
+          {output}
+        </ul>
+      );
+    }
     let _path = this.props.routes[1].path;
     if (_path === '/article') {
       _path = '/list';
     }
-    const webTec = [
-      <ul>
-        <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
-        </li>
-        <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
-        </li>
-        <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
-        </li>
-        <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
-        </li>
-        <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
-        </li>
-        <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
-        </li>
-        <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
-        </li>
-        <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
-        </li>
-        <li>
-          <i className="fa fa-fire"></i><Link to="/article?type=web&_id=8888">我是标题标题</Link>
-        </li>
-      </ul>];
     const _type = window.location.search.substring(window.location.search.indexOf('type') + 5).substring(0, 3);
     return (
-      <div className={`${styles.NavBar} NavBar`}>
+      <div className={`${styles.NavBar} NavBar`} ref="NavBar">
         <div className={`${styles.NavBarCenter} center`}>
           <ul className={styles.NavBarRight}>
             <li>
@@ -90,7 +101,7 @@ export default class NavBar extends Component {
                 <img src="/static/img/navbarback.png"/>
               </div>
               <Link className={styles.NavBarRightA} to="/list?type=web" style={ _type === 'web' && _path ==='/list' ? {color: '#302f2f'} : {}}>前端攻城</Link>
-              <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
+              <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`} ref="webHideMenu">
                 {webTec}
               </div>
             </li>
@@ -99,8 +110,8 @@ export default class NavBar extends Component {
                 <img src="/static/img/navbarback.png"/>
               </div>
               <Link className={styles.NavBarRightA} to="/list?type=word" style={ _type === 'wor' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</Link>
-              <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
-                {webTec}
+              <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`} ref="wordHideMenu">
+                {wordTec}
               </div>
             </li>
             <li className={styles.NavBarRightMenu}>
@@ -108,8 +119,7 @@ export default class NavBar extends Component {
                 <img src="/static/img/navbarback.png"/>
               </div>
               <Link className={styles.NavBarRightA} to="/novel">小说</Link>
-              <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`}>
-                {webTec}
+              <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`} ref="novelHideMenu">
               </div>
             </li>
             <li>
