@@ -21,7 +21,10 @@ export default class NavBar extends Component {
       _id: search._id
     });
     this.props.router.push({pathname: '/article', search: `?type=${search.type}&_id=${search._id}`});
+    //跳转获取文章详情
     this.props.clientBoundAC.getArticleDetails({type: 'details', _id: search._id});
+    //跳转获取文章评论
+    this.props.clientBoundAC.getArticleComment(search._id, 1, 10);
   }
   setHideMenuWidth = () => {
     let winWidth = this.refs.NavBar.offsetWidth;

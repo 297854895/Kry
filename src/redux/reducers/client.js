@@ -2,7 +2,7 @@ import * as ActionTypes from '../constants/constants';
 import {fromJS} from 'immutable';
 const initState = {
   currentArticle: '',
-  currentArticleComment: [],
+  currentArticleComment: {},
   homePageArticleList: {},
   articleDetails: {},
   articleListByType: {},
@@ -27,6 +27,9 @@ export default function(state = fromJS(initState), action) {
       return state.updateIn(['articleRecommend'], () => {return fromJS(action.data)});
     case ActionTypes.GET_ARTICLE_BYTYPE_LIST:
       return state.updateIn(['articleListTop9'], () => {return fromJS(action.data)});
+    case ActionTypes.RESET_ARTICLE:
+      return state.updateIn(['articleDetails'], () => {return fromJS({})})
+                  .updateIn(['currentArticleComment'], () => {return fromJS({})});
     default:
       return state;
   }

@@ -27,9 +27,13 @@ export default class Article extends Component {
           return;
         }
       });
+      this.props.clientBoundAC.UpdateClientArticleShowInfo(articleinfo);
       articleinfo = fromJS(articleinfo);
     }
+    // 取文章数据
     this.props.clientBoundAC.getArticleDetails({type: 'details', _id: articleinfo.get('_id')});
+    // 取评论数据
+    this.props.clientBoundAC.getArticleComment(articleinfo.get('_id'), 1, 10);
   }
   componentDidUpdate() {
     if (this.refs.markdownText) {
@@ -40,7 +44,6 @@ export default class Article extends Component {
       });
       this.refs.markdownText.innerHTML = marked(this.props.client.getIn(['articleDetails','content']));
     }
-    scrollTo(0,0);
   }
   render() {
     let ArticleData = this.props.client.get('articleDetails');

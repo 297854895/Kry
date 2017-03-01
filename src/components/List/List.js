@@ -29,6 +29,18 @@ export default class List extends Component {
   togglePage = (page) => {
     this.props.clientBoundAC.getArticleListByType('GET_ARTICLE_BYTYPE', {filterKey: this.props.data, index: page, size: 10, type: 'list'});
   }
+  LinkTo = (search) => {
+    this.props.clientBoundAC.resetArticleDetails();
+    this.props.clientBoundAC.UpdateClientArticleShowInfo({
+      type: search.type,
+      _id: search._id
+    });
+    this.props.router.push({pathname: '/article', search: `?type=${search.type}&_id=${search._id}`});
+    //跳转获取文章详情
+    this.props.clientBoundAC.getArticleDetails({type: 'details', _id: search._id});
+    //跳转获取文章评论
+    this.props.clientBoundAC.getArticleComment(search._id, 1, 10);
+  }
   render() {
     let articledata = this.props.client.getIn(['articleListByType', 'data']);
     if (!articledata) return (<div key="loading-article-list" style={{width: '800px', height: '480px', position: 'relative'}}>
@@ -45,7 +57,7 @@ export default class List extends Component {
               <img src={item.imgUrl}/>
             </div>
             <div className="article-list-right">
-              <h1><Link to={`/article?type=${this.props.data}&_id=${item._id}`}>{item.title}</Link></h1>
+              <h1><a onClick={this.LinkTo.bind(this, item)}>{item.title}</a></h1>
               <div>
                 <span>
                   <i className="fa fa-clock-o"></i>&nbsp;{item.createTime.substring(0, 10)}

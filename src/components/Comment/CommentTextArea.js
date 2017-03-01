@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Style from './CommentTextArea.less';
 import Notification from '../Notification/Notification.js';
+import axios from 'axios';
+
 export default class CommentTextArea extends Component {
   constructor(props) {
     super(props);
@@ -56,8 +58,22 @@ export default class CommentTextArea extends Component {
         context: '少侠所言当真是玄之又玄，可否通俗几分...',
       });
       return;
-    }
-    console.log({comment: comment, name: name});
+    };
+    axios.post('/front/comment', {content: comment, auth: name, authPic: this.refs.currentPic.getAttribute('data-num'), aid: this.props.client.getIn(['currentArticle', '_id'])})
+    .then(resp => {
+      if (resp.status === 200) {
+        Notification({
+          type: 'success',
+          context: '少侠高论果然非凡！',
+        });
+        this.setState({faceShow: false, comment: ''});
+        this.refs.textarea.value = '';
+      }
+    })
+    .catch(err => {
+      console.error(err);
+    })
+    // {comment: comment, name: name, pic: this.refs.currentPic.getAttribute('data-num')};
   }
   toggleUserPicShow = () => {
     const status = this.refs.changePic.style.display;
@@ -67,14 +83,15 @@ export default class CommentTextArea extends Component {
       this.refs.changePic.style.display = 'none';
     }
   }
-  changeUserPic = (src) => {
-    this.refs.currentPic.src = src;
+  changeUserPic = (data) => {
+    this.refs.currentPic.src = data.src;
+    this.refs.currentPic.setAttribute('data-num', data.num);
   }
   render() {
     return (
       <div className={Style.CommentTextArea}>
         <span className={Style.CommentTextAreaUserPic}>
-          <img ref="currentPic" src="/static/img/userpic/1.png"/>
+          <img ref="currentPic" data-num={1} src="/static/img/userpic/1.png"/>
           <span onClick={this.toggleUserPicShow}>换头像</span>
         </span>
         <div className={Style.CommentTextAreaInput}>
@@ -89,31 +106,31 @@ export default class CommentTextArea extends Component {
         {this.state.faceShow ? this.returnFace() : ''}
         <div className={Style.CommentUserPic} ref="changePic">
           <div className={Style.sanjiao}></div>
-          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/1.png")}>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, {src: "/static/img/userpic/1.png", num: 1})}>
             默认
           </div>
-          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/2.jpg")}>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, {src: "/static/img/userpic/2.jpg", num: 2})}>
             <img src="/static/img/userpic/2.jpg"/>
           </div>
-          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/3.jpg")}>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, {src: "/static/img/userpic/3.jpg", num: 3})}>
             <img src="/static/img/userpic/3.jpg"/>
           </div>
-          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/4.jpg")}>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, {src: "/static/img/userpic/4.jpg", num: 4})}>
             <img src="/static/img/userpic/4.jpg"/>
           </div>
-          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/5.jpg")}>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, {src: "/static/img/userpic/5.jpg", num: 5})}>
             <img src="/static/img/userpic/5.jpg"/>
           </div>
-          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/6.jpg")}>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, {src: "/static/img/userpic/6.jpg", num: 6})}>
             <img src="/static/img/userpic/6.jpg"/>
           </div>
-          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/7.jpg")}>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, {src: "/static/img/userpic/7.jpg", num: 7})}>
             <img src="/static/img/userpic/7.jpg"/>
           </div>
-          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/8.jpg")}>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, {src: "/static/img/userpic/8.jpg", num: 8})}>
             <img src="/static/img/userpic/8.jpg"/>
           </div>
-          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, "/static/img/userpic/9.jpg")}>
+          <div className={Style.picEach} onClick={this.changeUserPic.bind(this, {src: "/static/img/userpic/9.jpg", num: 9})}>
             <img src="/static/img/userpic/9.jpg"/>
           </div>
           <span onClick={this.toggleUserPicShow}>关闭</span>

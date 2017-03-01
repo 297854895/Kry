@@ -22,9 +22,8 @@ export function UpdateClientValue(data) {
 export function resetArticleDetails() {
   return dispatch => {
     dispatch({
-      type: ActionTypes.GET_ARTICLE_DETAILS,
-      data: {}
-    })
+      type: ActionTypes.RESET_ARTICLE
+    });
   };
 }
 //get article details
@@ -104,89 +103,19 @@ export function getArticleListByType(path, params) {
 }
 
 //getArticle comment
-export function getArticleComment(type, articleid, cid) {
-  const data = [
-    {
-      type: 'main',
-      dateTime: '2017-03-04',
-      thumbNum: 1930,
-      comNum: 1333,
-      cid: 1,
-      userName: '空如也',
-      context: '十分不错！',
-      comment: [
-        {
-          userName: '空如也',
-          context: '第三方和湿地开放很都是开发商的联发科。',
-          type: 'comment',
-          cid: 1,
-          ccid: 'c1'
-        },
-        {
-          userName: '空如也',
-          context: '第三方和湿地开放很都是开发商的联发科。',
-          type: 'comment',
-          cid: 1,
-          ccid: 'c2'
-        },
-        {
-          userName: '空如也',
-          context: '第三方和湿地开放很都是开发商的联发科。',
-          type: 'comment',
-          cid: 1,
-          ccid: 'c3'
-        },
-        {
-          userName: '空如也',
-          context: '第三方和湿地开放很都是开发商的联发科。',
-          type: 'comment',
-          cid: 1,
-          ccid: 'c4'
-        },
-        {
-          userName: '空如也',
-          context: '第三方和湿地开放很都是开发商的联发科。',
-          type: 'comment',
-          cid: 1,
-          ccid: 'c5'
-        }
-      ]
-    },
-    {
-      type: 'main',
-      dateTime: '2017-03-04',
-      thumbNum: 30,
-      comNum: 100,
-      cid: 2,
-      userName: '余小思',
-      context: '傻逼傻逼傻逼！',
-      comment: []
-    },
-    {
-      type: 'main',
-      dateTime: '2017-03-04',
-      thumbNum: 30,
-      comNum: 100,
-      cid: 3,
-      userName: '余小思',
-      context: '傻逼傻逼傻逼！',
-      comment: []
-    },
-    {
-      type: 'main',
-      dateTime: '2017-03-04',
-      thumbNum: 30,
-      comNum: 100,
-      cid: 4,
-      userName: '余小思',
-      context: '傻逼傻逼傻逼！',
-      comment: []
-    }
-  ];
+export function getArticleComment(_id, index, size, filterKey) {
   return dispatch => {
-    dispatch({
-        type: ActionTypes.GET_ARTICLE_COMMENT,
-        data: data
-    });
-  };
+    axios.get('/front/comment', {params: {_id: _id, index: index, size: size, filterKey: filterKey}})
+    .then(resp => {
+      if (resp.status === 200) {
+        dispatch({
+          type: ActionTypes.GET_ARTICLE_COMMENT,
+          data: resp.data.data.length > 0 ? resp.data : 'nocomment'
+        });
+      }
+    })
+    .catch(err => {
+      console.error(err);
+    })
+  }
 }

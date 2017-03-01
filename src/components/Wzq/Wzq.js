@@ -84,6 +84,7 @@ export default class Wzq extends Component {
   }
   xq = (position) => {
     if (currentXq !== 'user') return;
+    if (chessBoard[position.row][position.col] !== 0) return;
     chessBoard[position.row][position.col] = user;
     const qz = this.refs[`qz-${position.row}-${position.col}`];
     qz.style.background = `${firstXq === 'user' ? '#000' : '#fff'}`;

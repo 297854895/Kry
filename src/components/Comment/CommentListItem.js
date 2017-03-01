@@ -83,28 +83,16 @@ export default class CommentListItem extends Component {
   }
   render() {
     return (
-      <li className={Style.commentListItem} key={this.props.data.cid + 'KrycommentItem'}>
+      <li className={Style.commentListItem} key={this.props.data._id + 'KrycommentItem'}>
         <span className={Style.commentListUserPic}>
-          <img src="/static/img/userdefault.png"/>
+          <img src={`/static/img/userpic/${this.props.data.authPic === 1 ? '1.png' : this.props.data.authPic + '.jpg'}`}/>
         </span>
-        <p className={Style.commentListUserName}>{this.props.data.userName ? this.props.data.userName : 'N/A'}</p>
-        <p className={Style.commentListUserCon}>{this.props.data.context ? this.props.data.context : 'N/A'}</p>
-        {this.handleComment(this.props.data.comment)}
-        {this.state.commentShow ?
-          <div className={Style.CommentTextAreaInput}>
-            <textarea maxLength={200} onChange={this.commentChange} ref="textarea" placeholder="敢问少侠有何高见..."></textarea>
-            <span className={Style.CommentTextNum}>{this.state.comment.length}/200</span>
-            <div className={Style.CommentTextAreaHandle}>
-              <span><i onClick={this.showFace} className="fa fa-smile-o"></i></span>
-              <div><input maxLength={7} placeholder="少侠请留名..." ref="name" /></div>
-              <button className={Style.CommentTextAreaButton} onClick={this.publish}>回复</button>
-            </div>
-            {this.state.faceShow ? this.returnFace() : ''}
-          </div> : ''}
+        <p className={Style.commentListUserName}>{this.props.data.auth || 'N/A'}</p>
+        <p className={Style.commentListUserCon}>{this.props.data.content || 'N/A'}</p>
         <div className={Style.CommentListHandle}>
-          <span><i className="fa fa-thumbs-o-up"></i>&nbsp;顶一下（{this.props.data.thumbNum ? this.props.data.thumbNum : 0}）</span>
-          <span onClick={this.replyComment.bind(this, this.props.data.cid)}><i className="fa fa-mail-reply-all"></i>&nbsp;回复（{this.props.data.comNum ? this.props.data.comNum : 0}）</span>
-          <b>{this.props.data.dateTime ? this.props.data.dateTime : 'N/A'}</b>
+          <span><i className="fa fa-thumbs-o-up"></i>&nbsp;顶一下（{this.props.data.thumbNum || 0}）</span>
+          <span onClick={this.replyComment.bind(this, this.props.data._id)}><i className="fa fa-mail-reply-all"></i>&nbsp;回复（{this.props.data.comNum || 0}）</span>
+          <b>{this.props.data.createTime || 'N/A'}</b>
         </div>
       </li>
     );
