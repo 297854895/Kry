@@ -17,7 +17,7 @@ export default class List extends Component {
     this.props.clientBoundAC.getArticleListByType('GET_ARTICLE_BYTYPE', {filterKey: this.props.data, index: 1, size: 10, type: 'list'});
   }
   componentDidUpdate() {
-    scrollTo(0,352);
+    // scrollTo(0,312);
   }
   returnTag(data) {
     let str = '';

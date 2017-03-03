@@ -11,11 +11,16 @@ export default class ArticleList extends Component {
     this.props.clientBoundAC.getHomePageArticle({index: 1, size: 10, type: 'list'});
   }
   LinkTo = (search) => {
+    this.props.clientBoundAC.resetArticleDetails();
     this.props.clientBoundAC.UpdateClientArticleShowInfo({
       type: search.type,
       _id: search._id
     });
     this.props.router.push({pathname: '/article', search: `?type=${search.type}&_id=${search._id}`});
+    //跳转获取文章详情
+    this.props.clientBoundAC.getArticleDetails({type: 'details', _id: search._id});
+    //跳转获取文章评论
+    this.props.clientBoundAC.getArticleComment(search._id, 1, 10);
   }
   parseTagFn = (tag) => {
     const output = [];

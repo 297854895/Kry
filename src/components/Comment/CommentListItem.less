@@ -23,7 +23,16 @@
   }
   .commentListUserCon{
     padding: 6px 0;
+    word-break: break-all;
     color: #666;
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 4px;
+    }
+    span{
+      vertical-align: super;
+    }
   }
   .CommentListCommentCom{
     padding: 6px 10px 20px 30px;
@@ -57,6 +66,10 @@
         margin: 0px;
         color: inherit;
       }
+      -webkit-user-select: none;  /* Chrome all / Safari all /opera15+*/
+      -moz-user-select: none;     /* Firefox all */
+      -ms-user-select: none;      /* IE 10+ */
+      user-select: none;
     }
     span:hover{
       color: #ff546b;

@@ -1,7 +1,25 @@
 import * as ActionTypes from '../constants/constants';
 import axios from 'axios';
 // import { fromJS } from 'immutable';
-//setArticle type and id
+
+export function pushComment(data) {
+  return dispatch => {
+    dispatch({
+      type: ActionTypes.PUSH_COMMENT,
+      data: data
+    });
+  };
+}
+// reset homepagearticle list data
+export function resetClientState(path) {
+  return dispatch => {
+    dispatch({
+      type: ActionTypes.RESET_CLIENT_STATE,
+      data: path
+    });
+  };
+}
+// setArticle type and id
 export function UpdateClientArticleShowInfo(data) {
   return dispatch => {
     dispatch({
@@ -111,6 +129,24 @@ export function getArticleComment(_id, index, size, filterKey) {
         dispatch({
           type: ActionTypes.GET_ARTICLE_COMMENT,
           data: resp.data.data.length > 0 ? resp.data : 'nocomment'
+        });
+      }
+    })
+    .catch(err => {
+      console.error(err);
+    })
+  }
+}
+//get homepage comment
+export function getCommentHome() {
+  return dispatch => {
+    axios.get('/front/newcomment')
+    .then(resp => {
+      if (resp.status === 200) {
+        dispatch({
+          type: ActionTypes.UPDATE_CLIENTVALUE,
+          data: resp.data.length > 0 ? resp.data : 'nocomment',
+          path: ['newcomment']
         });
       }
     })

@@ -14,6 +14,13 @@ export default class NavBar extends Component {
     }
     this.props.clientBoundAC.getArticleListTop9();
   }
+  navTo = (search) => {
+    if (search.path === '/') {
+      scrollTo(0,0);
+    }
+    this.props.clientBoundAC.resetClientState('articleListByType');
+    this.props.router.push({pathname: search.path, search: search.search});
+  }
   LinkTo = (search) => {
     this.props.clientBoundAC.resetArticleDetails();
     this.props.clientBoundAC.UpdateClientArticleShowInfo({
@@ -97,13 +104,13 @@ export default class NavBar extends Component {
               <div className={styles.NavBarRightDiv} style={ !_path || _path ==='/home' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <Link className={styles.NavBarRightA} to="/" style={ !_path || _path ==='/home' ? {color: '#302f2f'} : {}}>首页</Link>
+              <a className={styles.NavBarRightA} onClick={this.navTo.bind(this, {path: '/'})} style={ !_path || _path ==='/home' ? {color: '#302f2f'} : {}}>首页</a>
             </li>
             <li className={styles.NavBarRightMenu}>
               <div className={styles.NavBarRightDiv} style={ _type === 'web' && _path ==='/list' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <Link className={styles.NavBarRightA} to="/list?type=web" style={ _type === 'web' && _path ==='/list' ? {color: '#302f2f'} : {}}>前端攻城</Link>
+              <a className={styles.NavBarRightA} onClick={this.navTo.bind(this, {path: '/list', search: '?type=web'})} style={ _type === 'web' && _path ==='/list' ? {color: '#302f2f'} : {}}>前端攻城</a>
               <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`} ref="webHideMenu">
                 {webTec}
               </div>
@@ -112,7 +119,7 @@ export default class NavBar extends Component {
               <div className={styles.NavBarRightDiv} style={ _type === 'wor' && _path ==='/list' ? {width: '100%'} : {}}>
                 <img src="/static/img/navbarback.png"/>
               </div>
-              <Link className={styles.NavBarRightA} to="/list?type=word" style={ _type === 'wor' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</Link>
+              <a className={styles.NavBarRightA} onClick={this.navTo.bind(this, {path: '/list', search: '?type=word'})} style={ _type === 'wor' && _path ==='/list' ? {color: '#302f2f'} : {}}>污文弄墨</a>
               <div className={`${styles.NavBarHideMenu} NavBar-hide-menu`} ref="wordHideMenu">
                 {wordTec}
               </div>

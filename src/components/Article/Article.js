@@ -74,7 +74,7 @@ export default class Article extends Component {
             </div>
             <div className={Style.articleContent} ref="markdownText">
             </div>
-            <Like />
+            <Like _id={this.props.client.getIn(['currentArticle', '_id'])} />
           </div>
         ]} _type="article" _typed="true" />
       );
@@ -82,7 +82,7 @@ export default class Article extends Component {
     return (
       <div key="article-details-container" className="Center center" ref="article">
         {Article_}
-        <Comment {...this.props}/>
+        <Comment {...this.props} title={ArticleData.title} type={ArticleData.type}/>
       </div>
     );
   }

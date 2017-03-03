@@ -59,15 +59,20 @@ export default class CommentTextArea extends Component {
       });
       return;
     };
-    axios.post('/front/comment', {content: comment, auth: name, authPic: this.refs.currentPic.getAttribute('data-num'), aid: this.props.client.getIn(['currentArticle', '_id'])})
+    const commentData = {type: this.props.type, title: this.props.title, content: comment, auth: name, authPic: this.refs.currentPic.getAttribute('data-num'), aid: this.props.client.getIn(['currentArticle', '_id'])}
+    axios.post('/front/comment', commentData)
     .then(resp => {
       if (resp.status === 200) {
         Notification({
           type: 'success',
           context: '少侠高论果然非凡！',
+          close: 2000
         });
         this.setState({faceShow: false, comment: ''});
         this.refs.textarea.value = '';
+        commentData.createTime = resp.data.createTime;
+        commentData._id = resp.data._id;
+        this.props.clientBoundAC.pushComment(commentData);
       }
     })
     .catch(err => {

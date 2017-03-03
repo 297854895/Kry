@@ -34,10 +34,7 @@ export default class Page extends Component {
     }
   }
   initialPage = () => {
-    let pageData = this.props;
-    if (this.state) {
-      pageData = this.state;
-    }
+    const pageData = this.props;
     const pageTotal = Math.ceil(pageData.data.total / pageData.data.size);
     const page = [];
     const pageCurrent = pageData.data.current;

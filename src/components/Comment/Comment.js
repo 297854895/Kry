@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Block from '../Block/Block';
 import Style from './Comment.less';
 import Loading from '../Loading/Loading';
+import Page from '../Page/Page';
 
 import CommentList from './CommentList';
 import CommentTextArea from './CommentTextArea';
@@ -41,7 +42,7 @@ export default class Comment extends Component {
             <b onClick={this.toggleCommentType.bind(this, {type: 'hot', _id: showData.data[0].aid})} className={this.state.type === 'hot' ? Style.active : ''}>最热</b>
             <b onClick={this.toggleCommentType.bind(this, {type: 'new', _id: showData.data[0].aid})} className={this.state.type === 'new' ? Style.active : ''}>最新</b>
           </div>,
-          <CommentList key="comment-info-view-list" {...this.props} data={showData} />]
+          <CommentList key="comment-info-view-list" {...this.props} data={showData} type={this.state.type} />]
           :
           LoadingShow
         }

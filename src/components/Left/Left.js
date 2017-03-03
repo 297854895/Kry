@@ -13,8 +13,8 @@ export default class Left extends Component {
         <div className="Center-margin">
           <Intro {...this.props}/>
           <Hot {...this.props}/>
-          <Tag {...this.props}/>
           <RecentComment {...this.props}/>
+          <Tag {...this.props}/>
         </div>
       </div>
     );

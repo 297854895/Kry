@@ -11,7 +11,8 @@ export default class Intro extends Component {
           <img key="info-img-img" className="center" src="/static/img/jjx.png" style={{width: "120px"}}/>
         </div>
         <div key="info-intro" className="info-intro">
-
+          <p><i className="fa fa-quote-left" style={{marginRight: '10px'}}></i>这是一个还算有梦想的前端攻城师</p>
+          <p>胡作非为的地方<i className="fa fa-quote-right" style={{marginLeft: '10px'}}></i></p>
         </div>
       </div>
     ]

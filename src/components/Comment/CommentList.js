@@ -7,6 +7,10 @@ export default class CommentList extends Component {
   constructor(props) {
     super(props);
   }
+  togglePage = (page) => {
+    const _id = this.props.client.getIn(['currentArticle', '_id']);
+    this.props.clientBoundAC.getArticleComment(_id, page, 10, this.props.type);
+  }
   render() {
     const com = this.props.data.data;
     const output = [];
@@ -18,7 +22,7 @@ export default class CommentList extends Component {
     return (
       <ul key="comment_container-list" className={Style.commentListContainer}>
         {output}
-        {output.length > 10 ? <Page data={{index: this.props.data.index, size: this.props.data.size, total: this.props.data.total}} /> : ''}
+        {this.props.data.total > 10 ? <Page togglePage={this.togglePage} data={{current: this.props.data.index, size: this.props.data.size, total: this.props.data.total}} /> : ''}
       </ul>
     );
   }

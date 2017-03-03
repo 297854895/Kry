@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Style from './CommentListItem.less';
 import PageMin from '../PageMin/PageMin';
 import Notification from '../Notification/Notification.js';
+import axios from 'axios';
+
 export default class CommentListItem extends Component {
   constructor(props) {
     super(props);
@@ -79,20 +81,58 @@ export default class CommentListItem extends Component {
       });
       return;
     }
-    console.log({comment: comment, name: name});
+    // console.log({comment: comment, name: name});
   }
+  thumbComment = (_id) => {
+    axios.get('/front/thumbComment', { params : {_id: _id} })
+          .then(resp => {
+            if (resp.status === 200) {
+              Notification({
+                type: 'success',
+                context: '少侠操作成功了...',
+                close: 2000
+              });
+              this.refs.thumbNum.innerHTML = parseInt(this.refs.thumbNum.innerHTML) + 1;
+            }
+          })
+          .catch(err => {
+            Notification({
+              type: 'danger',
+              context: err,
+              close: 2000
+            });
+          });
+  }
+  handleFace = (str) => {
+    if (!str) return '';
+    const face = str.split('[');
+    if (face.length === 1) {
+      return str;
+    } else {
+      const output = [];
+      face.forEach((item, idx) => {
+        const number = parseInt(item);
+        let returnDom = item;
+        if (item.indexOf(']') === 2 && number <= 39 && number >= 0) {
+          returnDom = <img src={`/static/img/qq/${number < 10 ? '0' + number : number }.gif`} />;
+        }
+        output.push(<span key={"comment-split-" + idx}>{returnDom}{item.substring(3).length > 0 ? item.substring(3) : ''}</span>);
+      });
+      return output;
+    }
+  }
+  // <span onClick={this.replyComment.bind(this, this.props.data._id)}><i className="fa fa-mail-reply-all"></i>&nbsp;回复（{this.props.data.comNum || 0}）</span>
   render() {
     return (
       <li className={Style.commentListItem} key={this.props.data._id + 'KrycommentItem'}>
         <span className={Style.commentListUserPic}>
-          <img src={`/static/img/userpic/${this.props.data.authPic === 1 ? '1.png' : this.props.data.authPic + '.jpg'}`}/>
+          <img src={`/static/img/userpic/${this.props.data.authPic == 1 ? '1.png' : this.props.data.authPic + '.jpg'}`}/>
         </span>
         <p className={Style.commentListUserName}>{this.props.data.auth || 'N/A'}</p>
-        <p className={Style.commentListUserCon}>{this.props.data.content || 'N/A'}</p>
+        <p className={Style.commentListUserCon}>{this.handleFace(this.props.data.content || '')}</p>
         <div className={Style.CommentListHandle}>
-          <span><i className="fa fa-thumbs-o-up"></i>&nbsp;顶一下（{this.props.data.thumbNum || 0}）</span>
-          <span onClick={this.replyComment.bind(this, this.props.data._id)}><i className="fa fa-mail-reply-all"></i>&nbsp;回复（{this.props.data.comNum || 0}）</span>
-          <b>{this.props.data.createTime || 'N/A'}</b>
+          <span onClick={this.thumbComment.bind(this, this.props.data._id)}><i className="fa fa-thumbs-o-up"></i>&nbsp;顶一下（<i ref="thumbNum">{this.props.data.thumbNum || 0}</i>）</span>
+          <b>{this.props.data.createTime ? this.props.data.createTime.substring(0, 10) : ''}</b>
         </div>
       </li>
     );
