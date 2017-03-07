@@ -15,7 +15,7 @@ export default class NovelComment extends Component {
             </span>
           </div>
           <div className={Style.NovelCommentLeave}>
-            <label>留名</label><input placeholder="少侠请留名" />
+            <input placeholder="少侠请留名" maxLength={7}/>
             <b>评论</b>
           </div>
         </div>

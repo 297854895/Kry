@@ -30,7 +30,7 @@ export default class Comment extends Component {
     };
     let LoadingShow = [<div key="comment_container-list-loading" style={{width: '960px', height: '480px', position: 'relative'}}><Loading key="comment_container-list-loading-lo" /></div>]
     if (this.props.client.getIn(['currentArticleComment']) === 'nocomment') {
-      LoadingShow = [<div key="comment-no-data">暂无数据,.,,,</div>]
+      LoadingShow = [<div key="comment-no-data" className={Style.nocomment}>此处暂无评论，敢问少侠可愿赐教？</div>]
     }
     return (
       <div key="comment_container" className={Style.commentContainer}>

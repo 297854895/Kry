@@ -11,9 +11,6 @@ export default class CommentTextArea extends Component {
       comment: ''
     };
   }
-  componentDidMount = () => {
-    this.refs.textarea.focus();
-  }
   commentChange = () => {
     const value = this.refs.textarea.value;
     if (value.length > 500) {
